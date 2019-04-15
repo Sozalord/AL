@@ -78,7 +78,7 @@ setInterval(function(){
 	if (sozar.visible == null) return;
 	draw_circle(sozar.real_x, sozar.real_y, sozar.range)
 	draw_circle(sozap.real_x, sozap.real_y, sozap.range)
-}, 500);
+}, 50);
 
 //Send Items to merchant if in range
 setInterval(function ()
