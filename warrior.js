@@ -2,6 +2,13 @@ var group = ["Sozaw", "Sozap", "Sozar"];
 
 setInterval(function () {
 
+		if parent.get_active_characters().Sozap == null {
+			start_character("Sozap", 8)
+		}
+		if parent.get_active_characters().Sozar == null {
+			start_character("Sozar", 9)
+		}
+
 		let player1 = get_player("Sozap");
 		if (player1 == null) return;
 		if (player1.visible == null) return;
