@@ -156,6 +156,9 @@ function farm()
 	//Attack or move to target
     if (target != null) {
         if (distance_to_point(target.real_x, target.real_y) < character.range) {
+						if (target.target != "Sozaw") {
+							taunt(target)
+						}
             if (can_attack(target)) {
                 attack(target);
             }
@@ -392,4 +395,13 @@ function find_priority_targets() {
         }
     });
     return monsters;
+}
+//taunt an enemy who is targeting an ally
+var tauntcd;
+function taunt(target) {
+  //Curse only if target hasn't been cursed and if curse is off cd (cd is 5sec).
+  if (!tauntcd || new Date() - tauntcd > 3000) {
+    tauntcd = new Date();
+    parent.use_skill("taunt", target.id);
+  }
 }
