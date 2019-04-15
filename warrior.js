@@ -1,7 +1,7 @@
 var group = ["Sozaw", "Sozap", "Sozar"];
 
 setInterval(function () {
-		
+
 		let player1 = get_player("Sozap");
 		if (player1 == null) return;
 		if (player1.visible == null) return;
@@ -37,7 +37,7 @@ function on_party_invite(name) {
         accept_party_invite(name);
     }
 }
-setInterval(function () 
+setInterval(function ()
 {
 	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wcap", "wshoes"];
 	let eggs = ["egg0", "egg1", "egg2", "egg3", "egg4", "egg5", "egg6", "egg7", "egg8", "goldenegg", "vitscroll", "cscale", "gem0"];
@@ -57,7 +57,8 @@ game_log("---Script Start---");
 load_code(11)
 //Put monsters you want to kill in here
 //If your character has no target, it will travel to a spawn of the first monster in the list below.
-var monster_targets = ["phoenix", "mvampire", "bat", "goldenbat"];
+var priority_targets = ["pheonix", "mvampire", "goldenbat"]
+var monster_targets = ["bat"];
 
 var state = "farm";
 
@@ -71,7 +72,7 @@ setInterval(function(){
 	draw_circle(character.real_x, character.real_y, parent.character.range, 1, 0xD2F33E)
 }, 50);
 //Send Items to merchant if in range
-setInterval(function () 
+setInterval(function ()
 {
 	let items = parent.character.items
 	let player = get_player("Sozam");
@@ -84,7 +85,7 @@ setInterval(function ()
 	}
 }, 1000);
 //Send Gold to merchant if in range
-setInterval(function () 
+setInterval(function ()
 {
 	let player = get_player("Sozam");
 	let gold = character.gold
@@ -96,10 +97,10 @@ setInterval(function ()
 }, 1000);
 //Movement And Attacking
 setInterval(function () {
-	
+
 	//Determine what state we should be in.
 	state_controller();
-	
+
 	//Switch statement decides what we should do based on the value of 'state'
 	switch(state)
 	{
@@ -126,32 +127,32 @@ function state_controller()
 {
 	//Default to farming
 	var new_state = "farm";
-	
+
 	//Do we need potions?
 	for(type_id in potion_types)
 	{
 		var type = potion_types[type_id];
-		
+
 		var num_potions = num_items(type);
-		
+
 		if(num_potions < min_potions)
 		{
 			new_state = "resupply_potions";
 			break;
 		}
 	}
-	
+
 	if(state != new_state)
 	{
 		state = new_state;
 	}
-	
+
 }
 
 //This function contains our logic for when we're farming mobs
 function farm()
 {
-	var target = find_viable_targets()[0];
+	var target = find_priority_targets()[0];
 	//Attack or move to target
     if (target != null) {
         if (distance_to_point(target.real_x, target.real_y) < character.range) {
@@ -165,10 +166,25 @@ function farm()
 	}
 	else
 	{
-		if (!smart.moving) {
-			game_log("finding a target");
-            smart_move({ to: monster_targets[0] });
-        }
+		var target = find_viable_targets()[0];
+		//Attack or move to target
+	    if (target != null) {
+	        if (distance_to_point(target.real_x, target.real_y) < character.range) {
+	            if (can_attack(target)) {
+	                attack(target);
+	            }
+	        }
+	        else {
+	            move_to_target(target);
+	        }
+		}
+		else
+		{
+			if (!smart.moving) {
+				game_log("finding a target");
+	            smart_move({ to: monster_targets[0] });
+	    }
+		}
 	}
 }
 
@@ -176,20 +192,20 @@ function farm()
 function resupply_potions()
 {
 	var potion_merchant = get_npc("fancypots");
-	
+
 	var distance_to_merchant = null;
-	
-	if(potion_merchant != null) 
+
+	if(potion_merchant != null)
 	{
 		distance_to_merchant = distance_to_point(potion_merchant.position[0], potion_merchant.position[1]);
 	}
-	
-	if (!smart.moving 
+
+	if (!smart.moving
 		&& (distance_to_merchant == null || distance_to_merchant > 250)) {
             smart_move({ to:"potions"});
     }
-	
-	if(distance_to_merchant != null 
+
+	if(distance_to_merchant != null
 	   && distance_to_merchant < 250)
 	{
 		buy_potions();
@@ -204,9 +220,9 @@ function buy_potions()
 		for(type_id in potion_types)
 		{
 			var type = potion_types[type_id];
-			
+
 			var item_def = parent.G.items[type];
-			
+
 			if(item_def != null)
 			{
 				var cost = item_def.g * purchase_amount;
@@ -239,7 +255,7 @@ function num_items(name)
 {
 	var item_count = character.items.filter(item => item != null && item.name == name).reduce(function(a,b){ return a + (b["q"] || 1);
 	}, 0);
-	
+
 	return item_count;
 }
 
@@ -253,12 +269,12 @@ function empty_slots()
 function get_npc(name)
 {
 	var npc = parent.G.maps[character.map].npcs.filter(npc => npc.id == name);
-	
+
 	if(npc.length > 0)
 	{
 		return npc[0];
 	}
-	
+
 	return null;
 }
 
@@ -301,6 +317,49 @@ function find_viable_targets() {
                     && (parent.party_list.includes(mob.target)
                         || mob.target == character.name))
                     || monster_targets.includes(mob.mtype));
+
+    for (id in monsters) {
+        var monster = monsters[id];
+
+        if (parent.party_list.includes(monster.target)
+                    || monster.target == character.name) {
+            monster.targeting_party = 1;
+        }
+        else {
+            monster.targeting_party = 0;
+        }
+    }
+
+    //Order monsters by whether they're attacking us, then by distance.
+    monsters.sort(function (current, next) {
+        if (current.targeting_party > next.targeting_party) {
+            return -1;
+        }
+        var dist_current = distance(character, current);
+        var dist_next = distance(character, next);
+        // Else go to the 2nd item
+        if (dist_current < dist_next) {
+            return -1;
+        }
+        else if (dist_current > dist_next) {
+            return 1
+        }
+        else {
+            return 0;
+        }
+    });
+    return monsters;
+}
+//Same as above but for priority instead
+function find_priority_targets() {
+    var monsters = Object.values(parent.entities).filter(
+        mob => (mob.target == null
+                    || parent.party_list.includes(mob.target)
+                    || mob.target == character.name)
+                && (mob.type == "monster"
+                    && (parent.party_list.includes(mob.target)
+                        || mob.target == character.name))
+                    || priority_targets.includes(mob.mtype));
 
     for (id in monsters) {
         var monster = monsters[id];
