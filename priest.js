@@ -196,7 +196,7 @@ function farm()
 			       var target = find_viable_targets()[0];
 		    }
         if (target != null) {
-            if (player != null && target != null && target.s.cursed == undefined && in_attack_range(target)) {
+            if (player != null && target != null && target.s.cursed == undefined && in_attack_range(target) && target.hp > 6000) {
               curse(target)
             }
             if (distance_to_point(target.real_x, target.real_y) < character.range) {
