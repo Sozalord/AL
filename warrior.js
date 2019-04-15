@@ -71,13 +71,16 @@ setInterval(function(){
 	clear_drawings()
 	let sozar = get_player("Sozar")
 	let sozap = get_player("Sozap")
+	let grey = #566573
+	let purple = #A569BD
+	let green = #229954
 	if (sozap == null) return;
 	if (sozap.visible == null) return;
 	if (sozar == null) return;
 	if (sozar.visible == null) return;
-	draw_circle(character.real_x, character.real_y, character.range, 1, #566573)
-	draw_circle(sozar.real_x, sozar.real_y, sozar.range, 1, #A569BD)
-	draw_circle(sozap.real_x, sozap.real_y, sozap.range, 1, #229954)
+	draw_circle(character.real_x, character.real_y, character.range, 1, grey)
+	draw_circle(sozar.real_x, sozar.real_y, sozar.range, 1, purple)
+	draw_circle(sozap.real_x, sozap.real_y, sozap.range, 1, green)
 }, 50);
 
 //Send Items to merchant if in range
