@@ -75,7 +75,7 @@ setInterval(function(){
 	if (sozap.visible == null) return;
 	if (sozar == null) return;
 	if (sozar.visible == null) return;
-	draw_circle(character.real_x, character.real_y, parent.character.range, 1, 00F33E)
+	draw_circle(character.real_x, character.real_y, character.range, 1, D2F33E)
 	draw_circle(sozar.real_x, sozar.real_y, sozar.range, 1, 00e900)
 	draw_circle(sozap.real_x, sozap.real_y, sozap.range, 1, A739A7)
 }, 50);
