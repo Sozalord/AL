@@ -126,7 +126,7 @@ function state_controller()
 
 	if (get_target_of(Sozaw) == null)
 	{
-			new_state = "follow"
+			new_state = "follow";
 	}
 
 	//Do we need potions?
