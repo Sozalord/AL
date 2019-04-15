@@ -2,10 +2,10 @@ var group = ["Sozaw", "Sozap", "Sozar"];
 
 setInterval(function () {
 
-		if (get_active_characters().Sozap == undefined) {
+		if (get_active_characters().Sozap === undefined) {
 			start_character("Sozap", 8)
 		}
-		if (get_active_characters().Sozar == undefined) {
+		if (get_active_characters().Sozar === undefined) {
 			start_character("Sozar", 9)
 		}
 
