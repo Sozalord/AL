@@ -444,9 +444,6 @@ function curse(target) {
   //Curse only if target hasn't been cursed and if curse is off cd (cd is 5sec).
   if ((!lastcurse || new Date() - lastcurse > 5000) && !target.cursed) {
     lastcurse = new Date();
-    parent.socket.emit("ability", {
-      name: "curse",
-      id: target.id
-    });
+    parent.use_skill("curse", target.id);
   }
 }
