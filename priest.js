@@ -190,12 +190,16 @@ function farm()
 		    if (player != null)
 		    {
 			       var target = get_target_of(player);
+             let creature = get_target_of(player);
 		    }
 		    if (player == null)
 		    {
 			       var target = find_viable_targets()[0];
 		    }
         if (target != null) {
+            if (creature != null && creature.s.cursed == null && in_attack_range(creature)) {
+              curse(creature)
+            }
             if (distance_to_point(target.real_x, target.real_y) < character.range) {
                 if (can_attack(target)) {
                     attack(target);
@@ -433,4 +437,17 @@ function lowest_health_partymember() {
 
     //Return the lowest health
     return party[0].entity;
+}
+//Put curse on target if it's not already cursed
+var lastcurse;
+
+function curse(target) {
+  //Curse only if target hasn't been cursed and if curse is off cd (cd is 5sec).
+  if ((!lastcurse || new Date() - lastcurse > 5000) && !target.cursed) {
+    lastcurse = new Date();
+    parent.socket.emit("ability", {
+      name: "curse",
+      id: target.id
+    });
+  }
 }
