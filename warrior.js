@@ -66,11 +66,20 @@ var min_potions = 50; //The number of potions at which to do a resupply run.
 var purchase_amount = 200;//How many potions to buy at once.
 var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 
-//Show character range
+//Show character ranges
 setInterval(function(){
 	clear_drawings()
-	draw_circle(character.real_x, character.real_y, parent.character.range, 1, 0xD2F33E)
-}, 50);
+	draw_circle(character.real_x, character.real_y, parent.character.range, 1, //0xD2F33E)
+	let player1 = get_player("Sozar");
+	let player2 = get_player("Sozap");
+	if (player1 == null) return;
+	if (player1.visible == null) return;
+	if (player2 == null) return;
+	if (player2.visible == null) return;
+	draw_circle(player1.real_x, player1.real_y, player1.range)
+	draw_circle(player2.real_x, player2.real_y, player2.range)
+}, 500);
+
 //Send Items to merchant if in range
 setInterval(function ()
 {
@@ -154,18 +163,18 @@ function farm()
 {
 	var target = find_priority_targets()[0];
 	//Attack or move to target
-    if (target != null) {
-        if (distance_to_point(target.real_x, target.real_y) < character.range) {
-						if (target.target != "Sozaw") {
-							taunt(target)
-						}
-            if (can_attack(target)) {
-                attack(target);
-            }
-        }
-        else {
-            move_to_target(target);
-        }
+  if (target != null) {
+      if (distance_to_point(target.real_x, target.real_y) < character.range) {
+					if (target.target != "Sozaw") {
+						taunt(target)
+					}
+          if (can_attack(target)) {
+              attack(target);
+          }
+      }
+      else {
+          move_to_target(target);
+      }
 	}
 	else
 	{
