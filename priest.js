@@ -71,7 +71,7 @@ setInterval(function ()
 	let player = get_player("Sozam");
 	if (player == null) return;
 	if (player.visible == null) return;
-	for(let i = 2; i < 40; i++) {
+	for(let i = 2; i < 42; i++) {
     	if ((items[i]) != null) {
 			send_item(player, i, 1)
 		}
