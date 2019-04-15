@@ -53,7 +53,7 @@ game_log("---Script Start---");
 //If your character has no target, it will travel to a spawn of the first monster in the list below.
 var monster_targets = ["bat", "phoenix", "mvampire"];
 
-var state = "follow";
+var state = "farm";
 
 var min_potions = 50; //The number of potions at which to do a resupply run.
 var purchase_amount = 200;//How many potions to buy at once.
