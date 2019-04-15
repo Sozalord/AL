@@ -70,14 +70,14 @@ var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 setInterval(function(){
 	clear_drawings()
 	draw_circle(character.real_x, character.real_y, parent.character.range, 1, 0xD2F33E)
-	let player1 = get_player("Sozar");
-	let player2 = get_player("Sozap");
-	if (player1 == null) return;
-	if (player1.visible == null) return;
-	if (player2 == null) return;
-	if (player2.visible == null) return;
-	draw_circle(player1.real_x, player1.real_y, player1.range)
-	draw_circle(player2.real_x, player2.real_y, player2.range)
+	let sozar = get_player("Sozar")
+	let sozap = get_player("Sozap")
+	if (sozap == null) return;
+	if (sozap.visible == null) return;
+	if (sozar == null) return;
+	if (sozar.visible == null) return;
+	draw_circle(sozar.real_x, sozar.real_y, sozar.range)
+	draw_circle(sozap.real_x, sozap.real_y, sozap.range)
 }, 500);
 
 //Send Items to merchant if in range

@@ -57,7 +57,7 @@ var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 //Show character range
 //setInterval(function(){
 //	clear_drawings()
-//	draw_circle(character.real_x, character.real_y, parent.character.range, 1, //0xD2F33E)
+//	draw_circle(character.real_x, character.real_y, parent.character.range, 1, 0xD2F33E)
 //	let player = get_player("Sozaw");
 //	if (player == null) return;
 //	if (player.visible == null) return;
