@@ -31,7 +31,7 @@ function on_party_invite(name) {
 }
 
 var Sozaw = get_player("Sozaw")
-setInterval(function () 
+setInterval(function ()
 {
 	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wcap", "wshoes"];
 	let eggs = ["egg0", "egg1", "egg2", "egg3", "egg4", "egg5", "egg6", "egg7", "egg8", "goldenegg", "vitscroll", "cscale", "gem0"];
@@ -66,7 +66,7 @@ var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 //}, 50);
 
 //Send Items to merchant if in range
-setInterval(function () 
+setInterval(function ()
 {
 	let items = parent.character.items
 	let player = get_player("Sozam");
@@ -79,7 +79,7 @@ setInterval(function ()
 	}
 }, 1000);
 //Send Gold to merchant if in range
-setInterval(function () 
+setInterval(function ()
 {
 	let player = get_player("Sozam");
 	let gold = character.gold
@@ -91,10 +91,10 @@ setInterval(function ()
 }, 1000);
 //Movement And Attacking
 setInterval(function () {
-	
+
 	//Determine what state we should be in.
 	state_controller();
-	
+
 	//Switch statement decides what we should do based on the value of 'state'
 	switch(state)
 	{
@@ -123,35 +123,32 @@ setInterval(function () {
 function state_controller()
 {
 	//Default to farming
-	var new_state = "follow";
-	
-	if (get_target_of(Sozaw) != null)
+	var new_state = "farm";
+
+	if (get_target_of(Sozaw) == null)
 	{
-		if (is_monster(get_target_of(Sozaw)))
-		{
-			new_state = "farm"
-		}
+			new_state = "follow"
 	}
 
 	//Do we need potions?
 	for(type_id in potion_types)
 	{
 		var type = potion_types[type_id];
-		
+
 		var num_potions = num_items(type);
-		
+
 		if(num_potions < min_potions)
 		{
 			new_state = "resupply_potions";
 			break;
 		}
 	}
-	
+
 	if(state != new_state)
 	{
 		state = new_state;
 	}
-	
+
 }
 //This function makes you follow the warrior
 function follow()
@@ -169,17 +166,17 @@ function farm()
 {
 	//Try to get warrior's target first before defaulting to something viable
 		let player = get_player("Sozaw");
-		if (player != null) 
+		if (player != null)
 		{
 			var target = get_target_of(player);
 		}
-	
+
 		if (player == null)
 		if (player.visible == null)
 		{
 			var target = find_viable_targets()[0];
 		}
-	
+
 	//Attack or move to target
     if (target != null) {
         if (distance_to_point(target.real_x, target.real_y) < character.range) {
@@ -188,7 +185,12 @@ function farm()
             }
         }
         else {
-            move_to_target(target);
+          let player = get_player("Sozaw");
+          if (player == null) return;
+          if (player.visible == null) return;
+          move(
+          character.x + ((player.x - character.x) - 20),
+          character.y + ((player.y - character.y) - 20));
         }
 	}
 	else
@@ -204,20 +206,20 @@ function farm()
 function resupply_potions()
 {
 	var potion_merchant = get_npc("fancypots");
-	
+
 	var distance_to_merchant = null;
-	
-	if(potion_merchant != null) 
+
+	if(potion_merchant != null)
 	{
 		distance_to_merchant = distance_to_point(potion_merchant.position[0], potion_merchant.position[1]);
 	}
-	
-	if (!smart.moving 
+
+	if (!smart.moving
 		&& (distance_to_merchant == null || distance_to_merchant > 250)) {
             smart_move({ to:"potions"});
     }
-	
-	if(distance_to_merchant != null 
+
+	if(distance_to_merchant != null
 	   && distance_to_merchant < 250)
 	{
 		buy_potions();
@@ -232,9 +234,9 @@ function buy_potions()
 		for(type_id in potion_types)
 		{
 			var type = potion_types[type_id];
-			
+
 			var item_def = parent.G.items[type];
-			
+
 			if(item_def != null)
 			{
 				var cost = item_def.g * purchase_amount;
@@ -267,7 +269,7 @@ function num_items(name)
 {
 	var item_count = character.items.filter(item => item != null && item.name == name).reduce(function(a,b){ return a + (b["q"] || 1);
 	}, 0);
-	
+
 	return item_count;
 }
 
@@ -281,12 +283,12 @@ function empty_slots()
 function get_npc(name)
 {
 	var npc = parent.G.maps[character.map].npcs.filter(npc => npc.id == name);
-	
+
 	if(npc.length > 0)
 	{
 		return npc[0];
 	}
-	
+
 	return null;
 }
 
@@ -362,5 +364,3 @@ function find_viable_targets() {
     });
     return monsters;
 }
-
-
