@@ -69,7 +69,7 @@ var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 //Show character ranges
 setInterval(function(){
 	clear_drawings()
-	draw_circle(character.real_x, character.real_y, parent.character.range, 1, //0xD2F33E)
+	draw_circle(character.real_x, character.real_y, parent.character.range, 1, 0xD2F33E)
 	let player1 = get_player("Sozar");
 	let player2 = get_player("Sozap");
 	if (player1 == null) return;
