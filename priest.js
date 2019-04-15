@@ -187,10 +187,10 @@ function farm()
     }
     else {
 		    let player = get_player("Sozaw");
+        var creature = get_target_of(player);
 		    if (player != null)
 		    {
 			       var target = get_target_of(player);
-             var creature = get_target_of(player);
 		    }
 		    if (player == null)
 		    {
