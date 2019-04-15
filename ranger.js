@@ -161,9 +161,11 @@ function follow()
   	character.y + ((player.y - character.y) - 20));
   }
   else{
-    smart_move({
-  	x:(character.x + ((player.x - character.x) + 20)),
-  	y:(character.y + ((player.y - character.y) - 20))});
+    if (!smart.moving) {
+      smart_move({
+      x:(character.x + ((player.x - character.x) + 20)),
+      y:(character.y + ((player.y - character.y) - 20))});
+    }
   }
 }
 
@@ -200,9 +202,11 @@ function farm()
           	character.y + ((player.y - character.y) - 20));
           }
           else{
-            smart_move({
-          	x:(character.x + ((player.x - character.x) + 20)),
-          	y:(character.y + ((player.y - character.y) - 20))});
+            if (!smart.moving) {
+              smart_move({
+          	  x:(character.x + ((player.x - character.x) + 20)),
+          	  y:(character.y + ((player.y - character.y) - 20))});
+            }
           }
         }
 	}
