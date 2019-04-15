@@ -190,7 +190,7 @@ function farm()
 		    if (player != null)
 		    {
 			       var target = get_target_of(player);
-             let creature = get_target_of(player);
+             var creature = get_target_of(player);
 		    }
 		    if (player == null)
 		    {
