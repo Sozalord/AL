@@ -31,7 +31,7 @@ function on_party_invite(name) {
 }
 
 var Sozaw = get_player("Sozaw")
-setInterval(function () 
+setInterval(function ()
 {
 	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wcap", "wshoes"];
 	let items = parent.character.items
@@ -65,7 +65,7 @@ var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 //}, 50);
 
 //Send Items to merchant if in range
-setInterval(function () 
+setInterval(function ()
 {
 	let items = parent.character.items
 	let player = get_player("Sozam");
@@ -78,7 +78,7 @@ setInterval(function ()
 	}
 }, 1000);
 //Send Gold to merchant if in range
-setInterval(function () 
+setInterval(function ()
 {
 	let player = get_player("Sozam");
 	let gold = character.gold
@@ -90,10 +90,10 @@ setInterval(function ()
 }, 1000);
 //Movement And Attacking
 setInterval(function () {
-	
+
 	//Determine what state we should be in.
 	state_controller();
-	
+
 	//Switch statement decides what we should do based on the value of 'state'
 	switch(state)
 	{
@@ -123,7 +123,7 @@ function state_controller()
 {
 	//Default to farming
 	var new_state = "follow";
-	
+
 	if (get_target_of(Sozaw) != null)
 	{
 		if (is_monster(get_target_of(Sozaw)))
@@ -131,32 +131,32 @@ function state_controller()
 			new_state = "farm"
 		}
 	}
-	
+
 	//Do we need potions?
 	for(type_id in potion_types)
 	{
 		var type = potion_types[type_id];
-		
+
 		var num_potions = num_items(type);
-		
+
 		if(num_potions < min_potions)
 		{
 			new_state = "resupply_potions";
 			break;
 		}
 	}
-	
+
 	if(state != new_state)
 	{
 		state = new_state;
 	}
-	
+
 }
 //This function makes you follow the warrior
 function follow()
 {
 	var lowest_health = lowest_health_partymember();
-	
+
     //If we have a target to heal, heal them. Otherwise attack a target.
     if (lowest_health != null && lowest_health.health_ratio < 0.8) {
         if (distance_to_point(lowest_health.real_x, lowest_health.real_y) < character.range) {
@@ -166,7 +166,7 @@ function follow()
             move_to_target(lowest_health);
         }
     }
-	
+
 	let player = get_player("Sozaw");
 	if (player == null) return;
 	if (player.visible == null) return;
@@ -178,7 +178,7 @@ function follow()
 function farm()
 {
     var lowest_health = lowest_health_partymember();
-	
+
     //If we have a target to heal, heal them. Otherwise attack a target.
     if (lowest_health != null && lowest_health.health_ratio < 0.8) {
         if (distance_to_point(lowest_health.real_x, lowest_health.real_y) < character.range) {
@@ -189,9 +189,9 @@ function farm()
         }
     }
     else {
-		
+
 		let player = get_player("Sozaw");
-		if (player != null) 
+		if (player != null)
 		{
 			var target = get_target_of(player);
 		}
@@ -225,20 +225,20 @@ function farm()
 function resupply_potions()
 {
 	var potion_merchant = get_npc("fancypots");
-	
+
 	var distance_to_merchant = null;
-	
-	if(potion_merchant != null) 
+
+	if(potion_merchant != null)
 	{
 		distance_to_merchant = distance_to_point(potion_merchant.position[0], potion_merchant.position[1]);
 	}
-	
-	if (!smart.moving 
+
+	if (!smart.moving
 		&& (distance_to_merchant == null || distance_to_merchant > 250)) {
             smart_move({ to:"potions"});
     }
-	
-	if(distance_to_merchant != null 
+
+	if(distance_to_merchant != null
 	   && distance_to_merchant < 250)
 	{
 		buy_potions();
@@ -253,9 +253,9 @@ function buy_potions()
 		for(type_id in potion_types)
 		{
 			var type = potion_types[type_id];
-			
+
 			var item_def = parent.G.items[type];
-			
+
 			if(item_def != null)
 			{
 				var cost = item_def.g * purchase_amount;
@@ -288,7 +288,7 @@ function num_items(name)
 {
 	var item_count = character.items.filter(item => item != null && item.name == name).reduce(function(a,b){ return a + (b["q"] || 1);
 	}, 0);
-	
+
 	return item_count;
 }
 
@@ -302,12 +302,12 @@ function empty_slots()
 function get_npc(name)
 {
 	var npc = parent.G.maps[character.map].npcs.filter(npc => npc.id == name);
-	
+
 	if(npc.length > 0)
 	{
 		return npc[0];
 	}
-	
+
 	return null;
 }
 
@@ -391,14 +391,14 @@ function lowest_health_partymember() {
 		for(id in parent.party_list)
 		{
 			var member = parent.party_list[id];
-			
+
 			var entity = parent.entities[member];
-			
+
 			if(member == character.name)
 			{
 				entity = character;
 			}
-			
+
 			if(entity != null)
 			{
 				party.push({name: member, entity: entity});
@@ -425,15 +425,13 @@ function lowest_health_partymember() {
             member.health_ratio = 1;
         }
     }
-	
+
     //Order our party array by health percentage
     party.sort(function (current, next) {
         return current.entity.health_ratio - member.entity.health_ratio;
     });
-	
+
 
     //Return the lowest health
     return party[0].entity;
 }
-
-
