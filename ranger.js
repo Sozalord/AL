@@ -155,10 +155,16 @@ function follow()
 {
 	let player = get_player("Sozaw");
 	if (player == null) return;
-	if (player.visible == null) return;
-	move(
-	character.x + ((player.x - character.x) + 20),
-	character.y + ((player.y - character.y) - 20));
+  if(parent.distance(character, player) < character.range){
+    move(
+  	character.x + ((player.x - character.x) - 20),
+  	character.y + ((player.y - character.y) - 20));
+  }
+  else{
+    smart_move({
+  	x:(character.x + ((player.x - character.x) - 20)),
+  	y:(character.y + ((player.y - character.y) - 20))});
+  }
 }
 
 //This function contains our logic for when we're farming mobs
@@ -188,9 +194,16 @@ function farm()
           let player = get_player("Sozaw");
           if (player == null) return;
           if (player.visible == null) return;
-          move(
-          character.x + ((player.x - character.x) - 20),
-          character.y + ((player.y - character.y) - 20));
+          if(parent.distance(character, player) < character.range){
+            move(
+          	character.x + ((player.x - character.x) - 20),
+          	character.y + ((player.y - character.y) - 20));
+          }
+          else{
+            smart_move({
+          	x:(character.x + ((player.x - character.x) - 20)),
+          	y:(character.y + ((player.y - character.y) - 20))});
+          }
         }
 	}
 	else
