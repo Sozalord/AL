@@ -69,15 +69,15 @@ var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 //Show character ranges
 setInterval(function(){
 	clear_drawings()
-	draw_circle(character.real_x, character.real_y, parent.character.range, 1, 0xD2F33E)
 	let sozar = get_player("Sozar")
 	let sozap = get_player("Sozap")
 	if (sozap == null) return;
 	if (sozap.visible == null) return;
 	if (sozar == null) return;
 	if (sozar.visible == null) return;
-	draw_circle(sozar.real_x, sozar.real_y, sozar.range)
-	draw_circle(sozap.real_x, sozap.real_y, sozap.range)
+	draw_circle(character.real_x, character.real_y, parent.character.range, 1, #D1D11A)
+	draw_circle(sozar.real_x, sozar.real_y, sozar.range, 1, #00e900)
+	draw_circle(sozap.real_x, sozap.real_y, sozap.range, 1, #A739A7)
 }, 50);
 
 //Send Items to merchant if in range
