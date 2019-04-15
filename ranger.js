@@ -157,12 +157,12 @@ function follow()
 	if (player == null) return;
   if(parent.distance(character, player) < character.range){
     move(
-  	character.x + ((player.x - character.x) - 20),
+  	character.x + ((player.x - character.x) + 20),
   	character.y + ((player.y - character.y) - 20));
   }
   else{
     smart_move({
-  	x:(character.x + ((player.x - character.x) - 20)),
+  	x:(character.x + ((player.x - character.x) + 20)),
   	y:(character.y + ((player.y - character.y) - 20))});
   }
 }
