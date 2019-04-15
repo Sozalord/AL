@@ -2,13 +2,6 @@ var group = ["Sozaw", "Sozap", "Sozar"];
 
 setInterval(function () {
 
-		if (get_active_characters().Sozap === undefined) {
-			start_character("Sozap", 8)
-		}
-		if (get_active_characters().Sozar === undefined) {
-			start_character("Sozar", 9)
-		}
-
 		let player1 = get_player("Sozap");
 		if (player1 == null) return;
 		if (player1.visible == null) return;
@@ -32,6 +25,15 @@ setInterval(function () {
     }
 }, 1000 * 10);
 
+setInterval(function () {
+
+		if (get_active_characters().Sozap === undefined) {
+			start_character("Sozap", 8)
+		}
+		if (get_active_characters().Sozar === undefined) {
+			start_character("Sozar", 9)
+		}
+}, 1000);
 function on_party_request(name) {
     console.log("Party Request");
     if (group.indexOf(name) != -1) {
