@@ -71,9 +71,9 @@ setInterval(function(){
 	clear_drawings()
 	let sozar = get_player("Sozar")
 	let sozap = get_player("Sozap")
-	let grey = #566573
-	let purple = #A569BD
-	let green = #229954
+	let grey = 0x566573
+	let purple = 0xA569BD
+	let green = 0x229954
 	if (sozap == null) return;
 	if (sozap.visible == null) return;
 	if (sozar == null) return;
