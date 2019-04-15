@@ -48,7 +48,7 @@ game_log("---Script Start---");
 //Put monsters you want to kill in here
 var monster_targets = ["bat", "phoenix", "mvampire"];
 
-var state = "follow";
+var state = "farm";
 
 var min_potions = 50; //The number of potions at which to do a resupply run.
 var purchase_amount = 200;//How many potions to buy at once.
@@ -122,14 +122,11 @@ setInterval(function () {
 function state_controller()
 {
 	//Default to farming
-	var new_state = "follow";
+	var new_state = "farm";
 
-	if (get_target_of(Sozaw) != null)
+	if (get_target_of(Sozaw) == null)
 	{
-		if (is_monster(get_target_of(Sozaw)))
-		{
-			new_state = "farm"
-		}
+			new_state = "follow"
 	}
 
 	//Do we need potions?
@@ -189,18 +186,15 @@ function farm()
         }
     }
     else {
-
-		let player = get_player("Sozaw");
-		if (player != null)
-		{
-			var target = get_target_of(player);
-		}
-		if (player == null)
-		if (player.visible == null)
-		{
-			var target = find_viable_targets()[0];
-		}
-
+		    let player = get_player("Sozaw");
+		    if (player != null)
+		    {
+			       var target = get_target_of(player);
+		    }
+		    if (player == null)
+		    {
+			       var target = find_viable_targets()[0];
+		    }
         if (target != null) {
             if (distance_to_point(target.real_x, target.real_y) < character.range) {
                 if (can_attack(target)) {
@@ -208,7 +202,12 @@ function farm()
                 }
             }
             else {
-                move_to_target(target);
+              let player = get_player("Sozaw");
+              if (player == null) return;
+              if (player.visible == null) return;
+              move(
+              character.x + ((player.x - character.x) - 20),
+              character.y + ((player.y - character.y) - 20));
             }
         }
 		else
