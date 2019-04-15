@@ -187,7 +187,6 @@ function farm()
     }
     else {
 		    let player = get_player("Sozaw");
-        var creature = get_target_of(player);
 		    if (player != null)
 		    {
 			       var target = get_target_of(player);
@@ -197,8 +196,8 @@ function farm()
 			       var target = find_viable_targets()[0];
 		    }
         if (target != null) {
-            if (creature != null && creature.s.cursed == null && in_attack_range(creature)) {
-              curse(creature)
+            if (target != null && target.s.cursed == null && in_attack_range(target)) {
+              curse(target)
             }
             if (distance_to_point(target.real_x, target.real_y) < character.range) {
                 if (can_attack(target)) {
