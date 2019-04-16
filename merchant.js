@@ -45,7 +45,7 @@ setInterval(function () {
 	}
 }, 100);
 
-function merchantupgrade {
+function merchantupgrade() {
 var upgradeMaxLevel = 8; //Max level it will stop upgrading items at if enabled
 var upgradeWhitelist =
 	{
