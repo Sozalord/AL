@@ -71,7 +71,7 @@ var priority_targets = ["phoenix", "mvampire", "goldenbat"]
 //If your character has no target, it will travel to a spawn of the first monster in the list below.
 var monster_targets = ["mvampire", "bat"];
 //put levels of monsters you want to kill here
-var monster_levels = [2, 3, 4, 5, 6, 7, 8, 9, 10]
+var monster_levels = [5, 6, 7, 8, 9, 10]
 
 var state = "farm";
 
