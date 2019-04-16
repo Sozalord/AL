@@ -169,7 +169,6 @@ function farm()
 	}
   else {
     let player = get_player("Sozaw");
-    if (get_active_characters().Sozaw === undefined) return;
     if (player == null && !smart.moving) {
       ask_location("Sozaw")
     }
