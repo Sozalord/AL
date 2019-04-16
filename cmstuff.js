@@ -7,7 +7,7 @@ function ask_location(person) {
 }
 function give_location(person) {
   //send a message back to the requester
-  var location = {requester:character.name, map:character.map, x:character.real_x, y:character.real_y};
+  var location = {requester:character.name, map:character.map, x:character.x, y:character.y};
   send_cm(person, location);
 }
 function on_cm(name, data) {
