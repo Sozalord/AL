@@ -31,11 +31,11 @@ function on_party_invite(name) {
 }
 
 var Sozaw = get_player("Sozaw")
-var thanks = false;
+var thanks = true;
 //calls merchant
 setInterval(function () {
 	let items = parent.character.items
-	if ((items[36]) != null) {
+	if (thanks === true && (items[36]) != null) {
 		give_location("Sozam")
 		thanks = true;
 	}
@@ -73,6 +73,7 @@ setInterval(function ()
     	if ((items[i]) != null) {
 			send_item(player, i, 1)
       send_cm("Sozam", "thanks")
+      thanks = true;
 		}
 	}
 }, 1000);
