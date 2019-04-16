@@ -1,3 +1,4 @@
+load_code(6)
 setInterval(function(){}
 if (!character.moving){
   parent.socket.emit("merchant", {num:41});
@@ -74,7 +75,6 @@ if (!character.moving){
 setInterval(function(){
     if(character.moving){
         parent.socket.emit("merchant", {close:41});
-        load_code(6)
         //Potions And Looting
         setInterval(function () {
             loot();
