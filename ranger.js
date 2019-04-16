@@ -149,15 +149,13 @@ function farm()
 {
 	//Try to get warrior's target first before defaulting to something viable
 		let player = get_player("Sozaw");
-		if (player != null)
-		{
+		if (player != null){
 			var target = get_target_of(player);
 		}
 
-		if (player == null)
-		{
-			var target = find_viable_targets()[0];
-		}
+    if (player == null && !smart.moving) {
+      ask_location("Sozaw")
+    }
 
 	//Attack or move to target
     if (target != null && is_monster(target)) {
@@ -169,9 +167,6 @@ function farm()
 	}
   else {
     let player = get_player("Sozaw");
-    if (player == null && !smart.moving) {
-      ask_location("Sozaw")
-    }
     if (player == null) return;
     if (parent.distance(character, player) < character.range){
       stop(move)
