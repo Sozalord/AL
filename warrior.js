@@ -34,6 +34,7 @@ setInterval(function () {
 			start_character("Sozar", 9)
 		}
 }, 1000);
+
 function on_party_request(name) {
     console.log("Party Request");
     if (group.indexOf(name) != -1) {
@@ -67,7 +68,7 @@ load_code(11)
 //Put monsters you want to kill in here
 //If your character has no target, it will travel to a spawn of the first monster in the list below.
 var priority_targets = ["phoenix", "mvampire", "goldenbat"]
-var monster_targets = ["bat"];
+var monster_targets = ["iceroamer", "bat"];
 
 var state = "farm";
 
@@ -115,7 +116,7 @@ setInterval(function ()
 		if (gold > 500000) {
 			send_gold(player, gold - 500000)
 		}
-}, 1000);
+}, 10000);
 //Movement And Attacking
 setInterval(function () {
 
