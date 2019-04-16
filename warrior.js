@@ -69,7 +69,7 @@ load_code(11)
 var priority_targets = ["phoenix", "mvampire", "goldenbat"]
 //Put monsters you want to kill in here
 //If your character has no target, it will travel to a spawn of the first monster in the list below.
-var monster_targets = ["bat"];
+var monster_targets = ["mvampire", "bat"];
 //put levels of monsters you want to kill here
 var monster_levels = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
