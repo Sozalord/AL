@@ -24,7 +24,7 @@ function on_cm(name, data) {
   if (data.requester && data.map && data.x && data.y) {
     if (data.map != character.map) {
       stop(move)
-      smart_move(data.map)
+      smart_move({map:data.map, x:data.x, y:data.y})
     }
     if (data.map == character.map) {
     stop(move)
