@@ -65,10 +65,13 @@ setInterval(function ()
 }, 100);
 game_log("---Script Start---");
 load_code(11)
+//Priority targets that you will focus as soon as they get close enough
+var priority_targets = ["phoenix", "mvampire", "goldenbat"]
 //Put monsters you want to kill in here
 //If your character has no target, it will travel to a spawn of the first monster in the list below.
-var priority_targets = ["phoenix", "mvampire", "goldenbat"]
 var monster_targets = ["bat"];
+//put levels of monsters you want to kill here
+var monster_levels = ["2", "3", "4", "5", "6"]
 
 var state = "farm";
 
@@ -337,11 +340,9 @@ function find_viable_targets() {
     var monsters = Object.values(parent.entities).filter(
         mob => (mob.target == null
                     || parent.party_list.includes(mob.target)
-                    || mob.target == character.name)
-                && (mob.type == "monster"
-                    && (parent.party_list.includes(mob.target)
-                        || mob.target == character.name))
-                    || monster_targets.includes(mob.mtype));
+                    || mob.target == character.name) && (mob.type == "monster" && (parent.party_list.includes(mob.target)
+                    || mob.target == character.name))
+                    || monster_levels.includes(mob.level) && monster_targets.includes(mob.mtype));
 
     for (id in monsters) {
         var monster = monsters[id];
@@ -380,10 +381,8 @@ function find_priority_targets() {
     var monsters = Object.values(parent.entities).filter(
         mob => (mob.target == null
                     || parent.party_list.includes(mob.target)
-                    || mob.target == character.name)
-                && (mob.type == "monster"
-                    && (parent.party_list.includes(mob.target)
-                        || mob.target == character.name))
+                    || mob.target == character.name) && (mob.type == "monster" && (parent.party_list.includes(mob.target)
+                    || mob.target == character.name))
                     || priority_targets.includes(mob.mtype));
 
     for (id in monsters) {
