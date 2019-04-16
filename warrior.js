@@ -181,7 +181,9 @@ function farm()
 	//if my distance is out of my healers range go back to healer
 	let sozap = get_player("Sozap")
 	if (parent.distance(character, sozap) > sozap.range) {
-		move_to_target(sozap);
+		move(
+		character.x + ((sozap.x - character.x) / 2),
+		character.y + ((sozap.y - character.y) / 2));
 	}
 	//Attack or move to target
   if (target != null) {
