@@ -76,7 +76,7 @@ setInterval(function ()
 	for(let i = 2; i < 42; i++) {
     	if ((items[i]) != null) {
 			send_item(player, i, 1)
-      thanks("Sozam")
+      send_cm("Sozam", "thanks")
 		}
 	}
 }, 1000);

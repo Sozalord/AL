@@ -10,10 +10,6 @@ function give_location(person) {
   var location = {requester:character.name, map:character.map, x:character.x, y:character.y};
   send_cm(person, location);
 }
-function thanks(person) {
-  var thanks = "thanks."
-  send_cm(person, thanks)
-}
 function on_cm(name, data) {
   //recieving a message asking where you are give location
   console.log(data)
@@ -30,7 +26,7 @@ function on_cm(name, data) {
   if (data.map == null) return;
   if (data.x == null || data.y == null) return;
   if (data.requester && data.map && data.x && data.y) {
-    if (data.map != character.map) {
+    if (!smart.moving && data.map != character.map) {
       stop(move)
       smart_move({map:data.map, x:data.x, y:data.y})
     }
