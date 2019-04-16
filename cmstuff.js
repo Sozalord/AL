@@ -22,11 +22,11 @@ function on_cm(name, data) {
   if (data.map == null) return;
   if (data.x == null || data.y == null) return;
   if (data.requester && data.map && data.x && data.y) {
-    if (character.map != data.map) {
+    if (data.map != character.map) {
       stop(move)
       smart_move(data.map)
     }
-    if (character.map == data.map) {
+    if (data.map == character.map) {
     stop(move)
     smart_move({x:data.x, y:data.y});
     }
