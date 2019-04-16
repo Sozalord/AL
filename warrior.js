@@ -342,7 +342,7 @@ function find_viable_targets() {
                     || parent.party_list.includes(mob.target)
                     || mob.target == character.name) && (mob.type == "monster" && (parent.party_list.includes(mob.target)
                     || mob.target == character.name))
-                    || monster_levels.includes(mob.mlevel) && monster_targets.includes(mob.mtype));
+                    || monster_targets.includes(mob.mtype) && monster_levels.includes(mob.level));
 
     for (id in monsters) {
         var monster = monsters[id];
