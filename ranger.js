@@ -155,7 +155,6 @@ function farm()
 		}
 
 		if (player == null)
-		if (player.visible == null)
 		{
 			var target = find_viable_targets()[0];
 		}
