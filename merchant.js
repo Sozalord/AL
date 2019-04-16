@@ -1,6 +1,5 @@
 //sitting_spot = {x:-240, y:-50}
 load_code(6)
-var state = "merchantupgrade"
 setInterval(function(){
     if(!character.moving && character.map == "main"){
         parent.socket.emit("merchant", {num:41});
@@ -16,7 +15,7 @@ setInterval(function(){
       		var current = parent.entities[id];
 
       		//makes sure its a player
-      		if(current && current.type == 'character' && !current.npc)
+      		if(current && current.type == "character" && !current.npc && current.ctype != "merchant")
       		{
       			//determines if they already have a mluck boost
       			if(current.s.mluck)
