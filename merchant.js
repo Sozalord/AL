@@ -148,7 +148,7 @@ var combineWhitelist =
 
 
 setInterval(function() {
-	if(parent != null && parent.socket != null)
+	if(character.x == -240 && character.y == -50.0000001 && parent != null && parent.socket != null)
 	{
 		upgrade();
 		compound_items();
