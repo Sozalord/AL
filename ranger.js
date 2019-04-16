@@ -172,17 +172,7 @@ function farm()
     if (player == null) return;
     if (player.visible == null) return;
     if(parent.distance(character, player) < character.range){
-      stop(move)
-      move(
-      character.x + ((player.x - character.x) + 20),
-      character.y + ((player.y - character.y) - 20));
-    }
-    else{
-      if (!smart.moving) {
-        smart_move({
-        x:(character.x + ((player.x - character.x) + 20)),
-        y:(character.y + ((player.y - character.y) - 20))});
-      }
+      ask_location("Sozaw")
     }
   }
 }
