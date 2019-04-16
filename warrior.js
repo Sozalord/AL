@@ -178,15 +178,16 @@ function state_controller()
 function farm()
 {
 	var target = find_priority_targets()[0];
+	//if my distance is out of my healers range go back to healer
+	let sozap = get_player("Sozap")
+	if (parent.distance(character, sozap) > sozap.range) {
+		move_to_target(sozap);
+	}
 	//Attack or move to target
   if (target != null) {
       if (distance_to_point(target.real_x, target.real_y) < character.range) {
 					if (target.target != "Sozaw") {
 						taunt(target)
-					}
-					let sozap = get_player("Sozap")
-					if (parent.distance(character, sozap) > sozap.range) {
-						move_to_target(sozap);
 					}
           if (can_attack(target)) {
               attack(target);
