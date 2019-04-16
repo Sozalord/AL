@@ -161,7 +161,7 @@ function farm()
 		}
 
 	//Attack or move to target
-    if (target != null) {
+    if (target != null && is_monster(target)) {
         if (distance_to_point(target.real_x, target.real_y) < character.range) {
             if (can_attack(target)) {
                 attack(target);

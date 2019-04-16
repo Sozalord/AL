@@ -166,7 +166,7 @@ function farm()
 		    {
 			       var target = find_viable_targets()[0];
 		    }
-        if (target != null) {
+        if (target != null && is_monster(target)) {
             if (player != null && target != null && target.s.cursed == undefined && in_attack_range(target)) {
               if (target.hp > 6000) {
                 curse(target)
