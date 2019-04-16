@@ -7,7 +7,7 @@ function ask_location(person) {
 }
 function give_location(person) {
   //send a message back to the requester
-  var location = {requester:character.name, x:character.real_x, y:character.real_y};
+  var location = {requester:character.name, map:character.map, x:character.real_x, y:character.real_y};
   send_cm(person, location);
 }
 function on_cm(name, data) {
@@ -19,9 +19,16 @@ function on_cm(name, data) {
   give_location(name)
   }
   if (data.requester == null) return;
+  if (data.map == null) return;
   if (data.x == null || data.y == null) return;
-  if (data.requester && data.x && data.y) {
+  if (data.requester && data.map && data.x && data.y) {
+    if (character.map != data.map) {
+      stop(move)
+      smart_move(data.map)
+    }
+    if (character.map == data.map) {
     stop(move)
     smart_move({x:data.x, y:data.y});
+    }
   }
 }
