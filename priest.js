@@ -46,7 +46,7 @@ setInterval(function ()
 game_log("---Script Start---");
 //load_code(11)
 //Put monsters you want to kill in here
-var monster_targets = ["bigbird", "iceroamer", "bat", "phoenix", "mvampire"];
+var monster_targets = ["bat", "phoenix", "mvampire"];
 
 var state = "farm";
 
