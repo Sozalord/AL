@@ -31,10 +31,11 @@ function on_party_invite(name) {
 }
 
 var Sozaw = get_player("Sozaw")
+var thanks = false;
 //calls merchant
 setInterval(function () {
 	let items = parent.character.items
-	if ((items[36]) != null && !thanks) {
+	if ((items[36]) != null && thanks === false) {
 		give_location("Sozam")
 		thanks = true;
 	}
