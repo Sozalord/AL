@@ -182,7 +182,7 @@ function farm()
           let player = get_player("Sozaw");
           if (player == null) return;
           if (player.visible == null) return;
-          if(parent.distance(character, player) < character.range){
+          if (parent.distance(character, player) < character.range){
             move(
             character.x + ((player.x - character.x) - 20),
             character.y + ((player.y - character.y) - 20));

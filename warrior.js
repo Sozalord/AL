@@ -184,6 +184,10 @@ function farm()
 					if (target.target != "Sozaw") {
 						taunt(target)
 					}
+					let sozap = get_player("Sozap")
+					if (parent.distance(character, sozap) > sozap.range) {
+						move_to_target(sozap);
+					}
           if (can_attack(target)) {
               attack(target);
           }
