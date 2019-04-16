@@ -15,14 +15,20 @@ function request_dispatch () {
       game_log("here");
       if (waiting) send_request();
       else {
-        items = [];
+        pickups = [];
       }
     }, 10000)
 }
-function on_cm(name, data) {
-  if (data != null && data === "done") {
-    waiting = false;
-    show_json(data);
-  }
-  if (data != null && data == "send data")
+function on_cm(name, data){
+	if (data != null && data === "done") {
+		waiting = false;
+		show_json(data);
+	}
+	if (data != null && data === "send data"){
+		send_request();
+	}
 }
+
+setInterval(function(){
+	on_cm();
+},1500);
