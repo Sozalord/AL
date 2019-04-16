@@ -31,22 +31,25 @@ function on_party_invite(name) {
 }
 
 var Sozaw = get_player("Sozaw")
-setInterval(function ()
-{
-	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wcap", "wshoes"];
-	let eggs = ["egg0", "egg1", "egg2", "egg3", "egg4", "egg5", "egg6", "egg7", "egg8", "goldenegg", "vitscroll", "cscale", "gem0"];
+//calls merchant
+setInterval(function () {
 	let items = parent.character.items
+	let eggs = ["egg0", "egg1", "egg2", "egg3", "egg4", "egg5", "egg6", "egg7", "egg8", "goldenegg", "vitscroll", "cscale", "gem0"];
+	if ((items[36]) != null && !thanks) {
+		give_location("Sozam")
+		thanks = true;
+	}
+	if ((items[36]) == null && thanks === true) {
+		thanks("Sozam")
+	}
 	for(let i = 2; i < 42; i++) {
 		if ((items[i]) != null) {
-    		if(unwanted_items.indexOf(items[i].name) > -1) {
-				destroy_item(i)
-			}
 			if(eggs.indexOf(items[i].name) > -1) {
 				send_item("Sozap", i, 1)
 			}
 		}
 	}
-}, 100);
+}, 500);
 game_log("---Script Start---");
 //load_code(11)
 //Put monsters you want to kill in here

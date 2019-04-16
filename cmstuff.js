@@ -10,6 +10,10 @@ function give_location(person) {
   var location = {requester:character.name, map:character.map, x:character.x, y:character.y};
   send_cm(person, location);
 }
+function thanks(person) {
+  var thanks = "thanks."
+  send_cm(person, thanks)
+}
 function on_cm(name, data) {
   //recieving a message asking where you are give location
   console.log(data)

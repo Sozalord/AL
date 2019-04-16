@@ -31,18 +31,17 @@ function on_party_invite(name) {
 }
 
 var Sozaw = get_player("Sozaw")
-setInterval(function ()
-{
-	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wcap", "wshoes"];
+//calls merchant
+setInterval(function () {
 	let items = parent.character.items
-	for(let i = 2; i < 42; i++) {
-		if ((items[i]) != null) {
-    		if(unwanted_items.indexOf(items[i].name) > -1) {
-				destroy_item(i)
-			}
-		}
+	if ((items[36]) != null && !thanks) {
+		give_location("Sozam")
+		thanks = true;
 	}
-}, 100);
+	if ((items[36]) == null && thanks === true) {
+		thanks("Sozam")
+	}
+}, 500);
 game_log("---Script Start---");
 //load_code(11)
 //Put monsters you want to kill in here
