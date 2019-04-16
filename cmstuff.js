@@ -15,6 +15,10 @@ function on_cm(name, data) {
   console.log(data)
   if (name == null) return;
   if (!my_people.includes(name)) return;
+  if (data == "thanks"){
+    stop(move)
+    smart_move({map:"main", x:-240, y:-50})
+  }
   if (data == "where are you?"){
   give_location(name)
   }
