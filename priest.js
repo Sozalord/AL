@@ -183,6 +183,7 @@ function farm()
           if (player == null && !smart.moving) {
             ask_location("Sozaw")
           }
+          if (player == null) return;
           if (parent.distance(character, player) < character.range){
             stop(move)
             move(
