@@ -1,10 +1,10 @@
 const my_people = ["Sozam", "Sozaw", "Sozar", "Sozap", "Soza"];
 
-function ask_location (person) {
+function ask_location(person) {
   //send the message to the person requesting
-  send_cm(person, where are you?);
+  send_cm(person, "where are you?");
 }
-function give_location (person) {
+function give_location(person) {
   //send a message back to the requester
   var location = {requester:character.name, x:character.real_x, y:character.real_y};
   send_cm(person, location);
