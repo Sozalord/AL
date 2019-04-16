@@ -103,9 +103,6 @@ setInterval(function () {
 		case "resupply_potions":
 			resupply_potions();
 			break;
-		case "follow":
-			follow()
-			break;
 	}
 }, 100);//Execute 10 times per second
 
@@ -123,11 +120,6 @@ function state_controller()
 {
 	//Default to farming
 	var new_state = "farm";
-
-	if (get_target_of(Sozaw) == null)
-	{
-			new_state = "follow";
-	}
 
 	//Do we need potions?
 	for(type_id in potion_types)
@@ -149,37 +141,7 @@ function state_controller()
 	}
 
 }
-//This function makes you follow the warrior
-function follow()
-{
-	var lowest_health = lowest_health_partymember();
 
-    //If we have a target to heal, heal them. Otherwise attack a target.
-    if (lowest_health != null && lowest_health.health_ratio < 0.8) {
-        if (distance_to_point(lowest_health.real_x, lowest_health.real_y) < character.range) {
-            heal(lowest_health);
-        }
-        else {
-            move_to_target(lowest_health);
-        }
-    }
-
-	let player = get_player("Sozaw");
-	if (player == null) return;
-	if (player.visible == null) return;
-  if(parent.distance(character, player) < character.range){
-    move(
-  	character.x + ((player.x - character.x) - 20),
-  	character.y + ((player.y - character.y) - 20));
-  }
-  else{
-    if (!smart.moving) {
-      smart_move({
-      x:(character.x + ((player.x - character.x) - 20)),
-      y:(character.y + ((player.y - character.y) - 20))});
-    }
-  }
-}
 //This function contains our logic for when we're farming mobs
 function farm()
 {
@@ -215,31 +177,24 @@ function farm()
                     attack(target);
                 }
             }
-            else {
-              let player = get_player("Sozaw");
-              if (player == null) return;
-              if (player.visible == null) return;
-              if(parent.distance(character, player) < character.range){
-                move(
-              	character.x + ((player.x - character.x) - 20),
-              	character.y + ((player.y - character.y) - 20));
-              }
-              else{
-                if (!smart.moving) {
-                  smart_move({
-              	  x:(character.x + ((player.x - character.x) - 20)),
-              	  y:(character.y + ((player.y - character.y) - 20))});
-                }
-              }
-            }
         }
-		else
-		{
-			if (!smart.moving) {
-				game_log("finding a target");
-            	smart_move({ to: monster_targets[0] });
-        	}
-		}
+        else {
+          let player = get_player("Sozaw");
+          if (player == null) return;
+          if (player.visible == null) return;
+          if(parent.distance(character, player) < character.range){
+            move(
+            character.x + ((player.x - character.x) - 20),
+            character.y + ((player.y - character.y) - 20));
+          }
+          else{
+            if (!smart.moving) {
+              smart_move({
+              x:(character.x + ((player.x - character.x) - 20)),
+              y:(character.y + ((player.y - character.y) - 20))});
+            }
+          }
+        }
     }
 }
 

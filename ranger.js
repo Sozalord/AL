@@ -104,9 +104,6 @@ setInterval(function () {
 		case "resupply_potions":
 			resupply_potions();
 			break;
-		case "follow":
-			follow()
-			break;
 	}
 }, 100);//Execute 10 times per second
 
@@ -125,10 +122,6 @@ function state_controller()
 	//Default to farming
 	var new_state = "farm";
 
-	if (get_target_of(Sozaw) == null)
-	{
-			new_state = "follow";
-	}
 
 	//Do we need potions?
 	for(type_id in potion_types)
@@ -149,24 +142,6 @@ function state_controller()
 		state = new_state;
 	}
 
-}
-//This function makes you follow the warrior
-function follow()
-{
-	let player = get_player("Sozaw");
-	if (player == null) return;
-  if(parent.distance(character, player) < character.range){
-    move(
-  	character.x + ((player.x - character.x) + 20),
-  	character.y + ((player.y - character.y) - 20));
-  }
-  else{
-    if (!smart.moving) {
-      smart_move({
-      x:(character.x + ((player.x - character.x) + 20)),
-      y:(character.y + ((player.y - character.y) - 20))});
-    }
-  }
 }
 
 //This function contains our logic for when we're farming mobs
@@ -192,31 +167,24 @@ function farm()
                 attack(target);
             }
         }
-        else {
-          let player = get_player("Sozaw");
-          if (player == null) return;
-          if (player.visible == null) return;
-          if(parent.distance(character, player) < character.range){
-            move(
-          	character.x + ((player.x - character.x) + 20),
-          	character.y + ((player.y - character.y) - 20));
-          }
-          else{
-            if (!smart.moving) {
-              smart_move({
-          	  x:(character.x + ((player.x - character.x) + 20)),
-          	  y:(character.y + ((player.y - character.y) - 20))});
-            }
-          }
-        }
 	}
-	else
-	{
-		if (!smart.moving) {
-			game_log("finding a target");
-            smart_move({ to: monster_targets[0] });
-        }
-	}
+  else {
+    let player = get_player("Sozaw");
+    if (player == null) return;
+    if (player.visible == null) return;
+    if(parent.distance(character, player) < character.range){
+      move(
+      character.x + ((player.x - character.x) + 20),
+      character.y + ((player.y - character.y) - 20));
+    }
+    else{
+      if (!smart.moving) {
+        smart_move({
+        x:(character.x + ((player.x - character.x) + 20)),
+        y:(character.y + ((player.y - character.y) - 20))});
+      }
+    }
+  }
 }
 
 //This function contains our logic during resupply runs
