@@ -51,7 +51,7 @@ setInterval(function(){
 
 setInterval(function ()
 {
-	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade"];
+	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wbreeches", "wgloves", "wshoes", "wattire", "wcap", "vitearring", "strearring", "dexearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
 	let items = parent.character.items
 	for(let i = 3; i < 42; i++) {
 		if ((items[i]) != null) {
@@ -83,10 +83,11 @@ var upgradeWhitelist =
 		//fireblade: 7,
 		sshield: 7,
 		shield: 7,
-		gloves: 7,
-		coat: 7,
-		helmet: 7,
-		pants: 7,
+		//gloves: 7,
+		//coat: 7,
+		//helmet: 7,
+    //shoes: 7,
+		//pants: 7,
 		gloves1: 7,
 		coat1: 7,
 		helmet1: 7,
@@ -94,7 +95,7 @@ var upgradeWhitelist =
 		shoes1: 7,
 		harbringer: 5,
 		oozingterror: 5,
-		bataxe: 7,
+		bataxe: 6,
 		spear: 7,
 		//xmaspants: 7,
 		//xmassweater: 7,
@@ -115,11 +116,11 @@ var upgradeWhitelist =
 		ecape: 7,
 		epyjamas: 7,
 		quiver: 7,
-		wbreeches: 7,
-		wgloves: 7,
-		wshoes: 7,
-		wattire: 7,
-		wcap: 7
+		//wbreeches: 7,
+		//wgloves: 7,
+		//wshoes: 7,
+		//wattire: 7,
+		//wcap: 7
 	};
 
 var combineWhitelist =
@@ -127,11 +128,11 @@ var combineWhitelist =
 		//ItemName, Max Level
 		wbook0: 3,
 		lostearring: 2,
-		strearring: 3,
+		//strearring: 3,
 		intearring: 3,
-		dexearring: 3,
+		//dexearring: 3,
 		//hpbelt: 3,
-		ringsj: 3,
+		//ringsj: 3,
 		strring: 3,
 		intring: 3,
 		dexring: 3,
@@ -139,7 +140,7 @@ var combineWhitelist =
 		dexamulet: 3,
 		intamulet: 3,
 		stramulet: 3,
-		vitearring: 3,
+		//vitearring: 3,
 		dexbelt: 3,
 		intbelt: 3,
 		strbelt: 3
