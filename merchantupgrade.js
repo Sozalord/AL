@@ -55,10 +55,10 @@ var upgradeWhitelist =
 		epyjamas: 7,
 		quiver: 7,
 		wbreeches: 7,
-		wgloves: 6,
-		wshoes: 6,
-		wattire: 6,
-		wcap: 6
+		wgloves: 7,
+		wshoes: 7,
+		wattire: 7,
+		wcap: 7
 	};
 
 var combineWhitelist =
