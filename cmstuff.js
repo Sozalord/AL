@@ -12,7 +12,7 @@ function give_location(person) {
 }
 function on_cm(name, data) {
   //recieving a message asking where you are give location
-  show_json(data)
+  console.log(data)
   if (name == null) return;
   if (!my_people.includes(name)) return;
   if (data == "where are you?"){
