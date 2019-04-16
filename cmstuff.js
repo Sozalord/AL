@@ -20,7 +20,7 @@ function on_cm(name, data) {
   }
   if (data.requester == null) return;
   if (data.x == null || data.y == null) return;
-  if (data.requester && data.x && data.y)
+  if (data.requester && data.x && data.y) {
     stop(move)
     smart_move({x:data.x, y:data.y});
   }
