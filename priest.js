@@ -183,7 +183,15 @@ function farm()
           if (player == null) return;
           if (player.visible == null) return;
           if (parent.distance(character, player) < character.range){
-            ask_location("Sozaw")
+            stop(move)
+            move(
+            character.x + ((player.x - character.x) + 20),
+            character.y + ((player.y - character.y) - 20));
+          }
+          else{
+            if (!smart.moving) {
+              ask_location("Sozaw")
+            }
           }
         }
     }
