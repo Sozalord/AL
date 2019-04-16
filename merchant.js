@@ -1,16 +1,17 @@
 //sitting_spot = {x:-240, y:-50}
 load_code(6)
+var state = "merchantupgrade"
 setInterval(function(){
     if(!character.moving && character.map == "main"){
         parent.socket.emit("merchant", {num:41});
-        var state = upgrade
+        var state = "merchantupgrade"
     }
 },500);
 
 setInterval(function(){
     if(character.moving){
         parent.socket.emit("merchant", {close:41});
-        var state = luck
+        var state = "lucky"
     }
 },500);
 
@@ -27,7 +28,24 @@ setInterval(function ()
 	}
 }, 100);
 
-if (state == upgrade) {
+setInterval(function () {
+
+	//Determine what state we should be in.
+	state_controller();
+
+	//Switch statement decides what we should do based on the value of 'state'
+	switch(state)
+	{
+		case "merchantupgrade":
+			merchantupgrade();
+			break;
+		case "lucky":
+			lucky();
+			break;
+	}
+}, 100);
+
+function merchantupgrade {
 var upgradeMaxLevel = 8; //Max level it will stop upgrading items at if enabled
 var upgradeWhitelist =
 	{
@@ -197,7 +215,7 @@ function find_item(filter) {
   return [-1, null];
 }
 }
-if (state == luck) {
+function lucky() {
 //Potions And Looting
 setInterval(function () {
     loot();
