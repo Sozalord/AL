@@ -71,7 +71,7 @@ var priority_targets = ["phoenix", "mvampire", "goldenbat"]
 //If your character has no target, it will travel to a spawn of the first monster in the list below.
 var monster_targets = ["bat"];
 //put levels of monsters you want to kill here
-var monster_levels = ["2", "3", "4", "5", "6", "7", "8", "9", "10"]
+var monster_levels = [2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 var state = "farm";
 
@@ -342,7 +342,7 @@ function find_viable_targets() {
                     || parent.party_list.includes(mob.target)
                     || mob.target == character.name) && (mob.type == "monster" && (parent.party_list.includes(mob.target)
                     || mob.target == character.name))
-                    || monster_levels.includes(mob.level) && monster_targets.includes(mob.mtype));
+                    || monster_levels.includes(mob.mlevel) && monster_targets.includes(mob.mtype));
 
     for (id in monsters) {
         var monster = monsters[id];
