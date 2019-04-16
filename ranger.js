@@ -51,7 +51,7 @@ game_log("---Script Start---");
 //load_code(11)
 //Put monsters you want to kill in here
 //If your character has no target, it will travel to a spawn of the first monster in the list below.
-var monster_targets = ["iceroamer", "bat", "phoenix", "mvampire"];
+var monster_targets = ["bigbird", "iceroamer", "bat", "phoenix", "mvampire"];
 
 var state = "farm";
 

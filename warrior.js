@@ -68,7 +68,7 @@ load_code(11)
 //Put monsters you want to kill in here
 //If your character has no target, it will travel to a spawn of the first monster in the list below.
 var priority_targets = ["phoenix", "mvampire", "goldenbat"]
-var monster_targets = ["iceroamer", "bat"];
+var monster_targets = ["bigbird", "iceroamer", "bat"];
 
 var state = "farm";
 
