@@ -2,7 +2,8 @@ const my_people = ["Sozam", "Sozaw", "Sozar", "Sozap", "Soza"];
 
 function ask_location(person) {
   //send the message to the person requesting
-  send_cm(person, "where are you?");
+  var question = "where are you?"
+  send_cm(person, question);
 }
 function give_location(person) {
   //send a message back to the requester
@@ -14,7 +15,7 @@ function on_cm(name, data) {
   show_json(data)
   if (name == null) return;
   if (!my_people.includes(name)) return;
-  if (data == "Where are you?"){
+  if (data == "where are you?"){
   give_location(name)
   }
   if (data.requester == null) return;
