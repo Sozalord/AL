@@ -35,14 +35,12 @@ var thanks = false;
 //calls merchant
 setInterval(function () {
 	let items = parent.character.items
-	if ((items[36]) != null && thanks === false) {
+	if ((items[36]) != null) {
 		give_location("Sozam")
 		thanks = true;
 	}
-	if ((items[36]) == null && thanks === true) {
-		thanks("Sozam")
-	}
 }, 500);
+
 game_log("---Script Start---");
 //load_code(11)
 //Put monsters you want to kill in here
@@ -74,6 +72,7 @@ setInterval(function ()
 	for(let i = 2; i < 42; i++) {
     	if ((items[i]) != null) {
 			send_item(player, i, 1)
+      thanks("Sozam")
 		}
 	}
 }, 1000);

@@ -47,17 +47,14 @@ function on_party_invite(name) {
         accept_party_invite(name);
     }
 }
-var thanks = false;
+
 //calls merchant
 setInterval(function () {
 	let items = parent.character.items
 	let eggs = ["egg0", "egg1", "egg2", "egg3", "egg4", "egg5", "egg6", "egg7", "egg8", "goldenegg", "vitscroll", "cscale", "gem0"];
-	if ((items[36]) != null && thanks === false) {
+	if ((items[36]) != null) {
 		give_location("Sozam")
 		thanks = true;
-	}
-	if ((items[36]) == null && thanks === true) {
-		thanks("Sozam")
 	}
 	for(let i = 2; i < 42; i++) {
 		if ((items[i]) != null) {
@@ -109,6 +106,7 @@ setInterval(function ()
 	for(let i = 2; i < 42; i++) {
     	if ((items[i]) != null) {
 			send_item(player, i, 1)
+			thanks("Sozam")
 		}
 	}
 }, 1000);
