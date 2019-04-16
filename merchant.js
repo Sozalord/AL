@@ -1,5 +1,5 @@
 load_code(6)
-setInterval(function(){}
+setInterval(function(){
 if (!character.moving){
   parent.socket.emit("merchant", {num:41});
   //Potions And Looting
@@ -69,7 +69,7 @@ if (!character.moving){
   	}
 
   }
-
+}
 },500);
 
 setInterval(function(){
