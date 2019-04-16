@@ -80,19 +80,19 @@ var purchase_amount = 200;//How many potions to buy at once.
 var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 
 //Show character ranges
-setInterval(function(){
-	clear_drawings()
-	let sozar = get_player("Sozar")
-	let sozap = get_player("Sozap")
-	let grey = 0x566573
-	let purple = 0xA569BD
-	let green = 0x229954
-	if (sozap != null && sozar != null){
-	draw_circle(character.real_x, character.real_y, character.range, 1, grey)
-	draw_circle(sozar.real_x, sozar.real_y, sozar.range, 1, green)
-	draw_circle(sozap.real_x, sozap.real_y, sozap.range, 1, purple)
-	}
-}, 50);
+//setInterval(function(){
+	//clear_drawings()
+	//let sozar = get_player("Sozar")
+	//let sozap = get_player("Sozap")
+	//let grey = 0x566573
+	//let purple = 0xA569BD
+	//let green = 0x229954
+	//if (sozap != null && sozar != null){
+	//draw_circle(character.real_x, character.real_y, character.range, 1, grey)
+	//draw_circle(sozar.real_x, sozar.real_y, sozar.range, 1, green)
+	//draw_circle(sozap.real_x, sozap.real_y, sozap.range, 1, purple)
+	//}
+//}, 50);
 
 //Send Items to merchant if in range
 setInterval(function ()
