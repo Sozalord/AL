@@ -62,32 +62,25 @@ var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 //	draw_circle(get_player("Sozaw").real_x, get_player("Sozaw").real_y, get_player("Sozaw").range)
 //}, 50);
 
-//Send Items to merchant if in range
-setInterval(function ()
-{
+//Send Items and gold to merchant if in range
+setInterval(function () {
 	let items = parent.character.items
 	let player = get_player("Sozam");
+	let gold = character.gold
 	if (player == null) return;
 	if (player.visible == null) return;
 	for(let i = 2; i < 42; i++) {
     	if ((items[i]) != null) {
 			send_item(player, i, 1)
-      send_cm("Sozam", "thanks")
-      thanks = true;
+			send_cm("Sozam", "thanks")
+			var thanks = true
 		}
 	}
-}, 1000);
-//Send Gold to merchant if in range
-setInterval(function ()
-{
-	let player = get_player("Sozam");
-	let gold = character.gold
-	if (player == null) return;
-	if (player.visible == null) return;
-		if (gold > 500000) {
-			send_gold(player, gold - 500000)
-		}
-}, 10000);
+	if (gold > 500000) {
+		send_gold(player, gold - 500000)
+	}
+}, 1000 *10);
+
 //Movement And Attacking
 setInterval(function () {
 
