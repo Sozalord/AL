@@ -31,8 +31,8 @@ function on_cm(name, data) {
       smart_move({map:data.map, x:data.x, y:data.y})
     }
     if (!smart.moving && data.map == character.map) {
-    stop(move)
-    smart_move({x:data.x, y:data.y});
+      stop(move)
+      smart_move({x:data.x, y:data.y});
     }
   }
 }

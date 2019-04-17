@@ -1,10 +1,18 @@
 //sitting_spot = {x:-240, y:-50}
 load_code(6)
+
+setInterval(function () {
+  items = character.items
+  if (!smart.moving && (items[36]) != null){
+    stop(move)
+    smart_move({map:"main", x:-240, y:-50})
+  }
+}, 1000)
 setInterval(function(){
     if(!character.moving && character.map == "main"){
         parent.socket.emit("merchant", {num:41});
     }
-},500);
+}, 1000);
 
 setInterval(function(){
     if(character.moving){
@@ -156,7 +164,7 @@ setInterval(function() {
 		compound_items();
 	}
 
-}, 75);
+}, 500);
 
 function upgrade() {
 	for (let i = 0; i < character.items.length; i++)
