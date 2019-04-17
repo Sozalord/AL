@@ -62,7 +62,7 @@ setInterval(function ()
 		}
 	}
 	}
-}, 100);
+}, 1000);
 
 //Potions And Looting
 setInterval(function () {
