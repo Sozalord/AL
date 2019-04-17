@@ -1,7 +1,7 @@
 load_code(6)
 //change these to determine your sitting spot in town you want these to match whats in your cmstuff.js
 var standx = -240
-var standy = -50
+var standy = -50.0000001
 
 setInterval(function () {
   items = character.items
@@ -72,7 +72,7 @@ setInterval(function ()
 		}
 	}
 	}
-}, 1000);
+}, 1000 *10);
 
 //Potions And Looting
 setInterval(function () {
