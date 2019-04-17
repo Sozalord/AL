@@ -98,7 +98,7 @@ var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 
 //call merchant if lucky buff wears off or someone else puts one on you
 setInterval(function () {
-	let player == "Sozam"
+	let player = "Sozam"
 	if(parent.character.s.mluck.f !== player) {
 		give_location(player)
 	}
