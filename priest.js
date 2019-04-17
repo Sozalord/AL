@@ -31,13 +31,11 @@ function on_party_invite(name) {
 }
 
 var Sozaw = get_player("Sozaw")
-var thanks = true;
 //calls merchant
 setInterval(function () {
 	let items = parent.character.items
-	if (thanks === true && (items[36]) != null) {
+	if ((items[36]) != null) {
 		give_location("Sozam")
-		thanks = true;
 	}
 }, 1000 *10);
 
@@ -72,8 +70,6 @@ setInterval(function () {
 	for(let i = 2; i < 42; i++) {
     	if ((items[i]) != null) {
 			send_item(player, i, 1)
-			send_cm("Sozam", "thanks")
-			var thanks = true
 		}
 	}
 	if (gold > 500000) {
