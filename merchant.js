@@ -63,7 +63,7 @@ setInterval(function(){
 setInterval(function ()
 {
   if (distance_to_point(standx, standy) < 20) {
-	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wbreeches", "wgloves", "wshoes", "wattire", "wcap", "vitearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
+	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wgloves", "wattire", "wcap", "vitearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
 	let items = parent.character.items
 	for(let i = 3; i < 42; i++) {
 		if ((items[i]) != null) {
@@ -127,9 +127,9 @@ var upgradeWhitelist =
 		ecape: 7,
 		epyjamas: 7,
 		quiver: 7,
-		//wbreeches: 7,
+		wbreeches: 7,
 		//wgloves: 7,
-		//wshoes: 7,
+		wshoes: 7,
 		//wattire: 7,
 		//wcap: 7
 	};
@@ -139,9 +139,9 @@ var combineWhitelist =
 		//ItemName, Max Level
 		wbook0: 3,
 		lostearring: 2,
-		//strearring: 3,
+		strearring: 3,
 		intearring: 3,
-		//dexearring: 3,
+		dexearring: 3,
 		//hpbelt: 3,
 		//ringsj: 3,
 		strring: 3,
