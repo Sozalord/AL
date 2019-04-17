@@ -108,7 +108,7 @@ setInterval(function () {
 		character.x + ((player.x - character.x)),
 		character.y + ((player.y - character.y)));
 	}
-}, 1000);
+}, 1000 *60);
 
 //Send Items and gold to merchant if in range
 setInterval(function () {
