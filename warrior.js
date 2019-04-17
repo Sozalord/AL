@@ -221,7 +221,9 @@ function farm()
           }
       }
       else {
+				if (!is_moving(get_player("Sozaw"))) {
           move_to_target(target);
+				}
       }
 	}
 	else
@@ -235,14 +237,14 @@ function farm()
 	            }
 	        }
 					else {
-						if (!is_moving("Sozaw")) {
+						if (!is_moving(get_player("Sozaw"))) {
 		          move_to_target(target);
 						}
 		      }
 		}
 		else
 		{
-			if (!smart.moving) {
+			if (!is_moving(get_player("Sozaw"))) {
 				game_log("finding a target");
 	            smart_move({ to: monster_targets[0] });
 	    }
