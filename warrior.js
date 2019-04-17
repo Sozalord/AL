@@ -63,7 +63,7 @@ setInterval(function () {
 			}
 		}
 	}
-}, 500);
+}, 1000 *10);
 
 game_log("---Script Start---");
 load_code(11)

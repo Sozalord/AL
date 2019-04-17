@@ -51,14 +51,16 @@ setInterval(function(){
 
 setInterval(function ()
 {
+  if (character.x == -240 && character.y == -50.0000001) {
 	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wbreeches", "wgloves", "wshoes", "wattire", "wcap", "vitearring", "strearring", "dexearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
 	let items = parent.character.items
 	for(let i = 3; i < 42; i++) {
 		if ((items[i]) != null) {
     		if(unwanted_items.indexOf(items[i].name) > -1) {
 				sell(i, 1)
-			}
+      }
 		}
+	}
 	}
 }, 100);
 

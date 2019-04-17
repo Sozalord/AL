@@ -39,7 +39,7 @@ setInterval(function () {
 		give_location("Sozam")
 		thanks = true;
 	}
-}, 500);
+}, 1000 *10);
 
 game_log("---Script Start---");
 //load_code(11)
