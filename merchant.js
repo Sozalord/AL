@@ -9,13 +9,13 @@ setInterval(function () {
     stop(move)
     smart_move({map:"main", x:standx, y:standy})
   }
-}, 1000)
+}, 1000 *10)
 
 setInterval(function(){
     if(!character.moving && character.map == "main"){
         parent.socket.emit("merchant", {num:41});
     }
-}, 1000);
+}, 1000 *10);
 
 setInterval(function(){
     if(character.moving){
@@ -58,7 +58,7 @@ setInterval(function(){
       		}
       	}
     }
-},500);
+}, 1000);
 
 setInterval(function ()
 {
@@ -77,8 +77,6 @@ setInterval(function ()
 
 //Potions And Looting
 setInterval(function () {
-    loot();
-
     //Heal With Potions if we're below 75% hp.
     if (character.hp / character.max_hp < 0.75 || character.mp / character.max_mp < 0.75) {
         use_hp_or_mp();
@@ -165,11 +163,13 @@ setInterval(function() {
 	   if(parent != null && parent.socket != null) {
 		   upgrade();
 		   compound_items();
-       move_item_to_empty_slot(36);
 	   }
   }
-}, 500);
+}, 1000);
 
+setInterval(function() {
+  move_item_to_empty_slot(36);
+}, 60000 *2);
 function move_item_to_empty_slot(item) {
   let items = parent.character.items
 	for(let i = 4; i < 41; i++) {
@@ -268,7 +268,7 @@ function find_item(filter) {
 setInterval(function(){
 	clear_drawings()
 	draw_circle(character.real_x, character.real_y, 320)
-}, 50);
+}, 100);
 
 var lastluck = new Date(0);
 function luck(target){
