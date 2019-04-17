@@ -1,11 +1,13 @@
-//sitting_spot = {x:-240, y:-50}
 load_code(6)
+//change these to determine your sitting spot in town you want these to match whats in your cmstuff.js
+var standx = -240
+var standy = -50
 
 setInterval(function () {
   items = character.items
   if (!smart.moving && (items[36]) != null){
     stop(move)
-    smart_move({map:"main", x:-240, y:-50})
+    smart_move({map:"main", x:standx, y:standy})
   }
 }, 1000)
 setInterval(function(){
@@ -59,7 +61,7 @@ setInterval(function(){
 
 setInterval(function ()
 {
-  if (character.x == -240 && character.y == -50.0000001) {
+  if (character.x == standx && character.y == standy) {
 	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wbreeches", "wgloves", "wshoes", "wattire", "wcap", "vitearring", "strearring", "dexearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
 	let items = parent.character.items
 	for(let i = 3; i < 42; i++) {
@@ -158,7 +160,7 @@ var combineWhitelist =
 
 
 setInterval(function() {
-	if(character.x == -240 && character.y == -50.0000001 && parent != null && parent.socket != null)
+	if(character.x == standx && character.y == standy && parent != null && parent.socket != null)
 	{
 		upgrade();
 		compound_items();

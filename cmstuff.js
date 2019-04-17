@@ -1,4 +1,7 @@
 const my_people = ["Sozam", "Sozaw", "Sozar", "Sozap", "Soza"];
+//change these to determine your sitting spot in town you want these to match whats in your merchant.js
+var standx = -240
+var standy = -50
 
 function ask_location(person) {
   //send the message to the person requesting
@@ -17,7 +20,7 @@ function on_cm(name, data) {
   if (!my_people.includes(name)) return;
   if (data == "thanks"){
     stop(move)
-    smart_move({map:"main", x:-240, y:-50})
+    smart_move({map:"main", x:standx, y:standy})
   }
   if (data == "where are you?"){
   give_location(name)
