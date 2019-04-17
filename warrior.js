@@ -205,8 +205,10 @@ function farm()
 	if (sozam != null && parent.character.s.mluck === undefined) {
 		move_to_target(sozam)
 	}
-	if (sozam != null && parent.character.s.mluck.f !== sozam) {
-		move_to_target(sozam)
+	if (parent.character.s.mluck !== undefined) {
+		if (sozam != null && parent.character.s.mluck.f !== sozam) {
+			move_to_target(sozam)
+		}
 	}
 	//Attack or move to target
   if (target != null) {
