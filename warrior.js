@@ -67,10 +67,10 @@ setInterval(function () {
 game_log("---Script Start---");
 load_code(11)
 //Priority targets that you will focus as soon as they get close enough
-var priority_targets = ["phoenix", "mvampire", "goldenbat"]
+var priority_targets = ["phoenix", "mvampire", "goldenbat", "wabbit"]
 //Put monsters you want to kill in here
 //If your character has no target, it will travel to a spawn of the first monster in the list below.
-var monster_targets = ["bat"];
+var monster_targets = ["bbpompom", "bat"];
 //put levels of monsters you want to kill here
 var monster_levels = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20 ,21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
 
