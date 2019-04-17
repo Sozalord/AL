@@ -30,7 +30,7 @@ function on_cm(name, data) {
       stop(move)
       smart_move({map:data.map, x:data.x, y:data.y})
     }
-    if (data.map == character.map) {
+    if (!smart.moving && data.map == character.map) {
     stop(move)
     smart_move({x:data.x, y:data.y});
     }
