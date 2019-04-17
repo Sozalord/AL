@@ -160,7 +160,7 @@ var combineWhitelist =
 
 
 setInterval(function() {
-	if (distance_to_point(standx, standy) < 20) && parent != null && parent.socket != null) {
+	if (distance_to_point(standx, standy) < 20 && parent != null && parent.socket != null) {
 		upgrade();
 		compound_items();
 	}
