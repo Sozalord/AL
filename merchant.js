@@ -9,7 +9,7 @@ setInterval(function () {
     stop(move)
     smart_move({map:"main", x:standx, y:standy})
   }
-}, 1000 *10)
+}, 1000 *30)
 
 setInterval(function(){
     if(!character.moving && character.map == "main"){
@@ -169,7 +169,7 @@ setInterval(function() {
 
 setInterval(function() {
   move_item_to_empty_slot(36);
-}, 60000 *2);
+}, 1000 *30);
 function move_item_to_empty_slot(item) {
   let items = parent.character.items
 	for(let i = 4; i < 41; i++) {
