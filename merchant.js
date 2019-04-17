@@ -165,7 +165,7 @@ setInterval(function() {
 		   compound_items();
 	   }
   }
-}, 1000);
+}, 500);
 
 setInterval(function() {
   move_item_to_empty_slot(36);
@@ -200,7 +200,7 @@ function upgrade() {
 				let [scroll_slot, scroll] = find_item(i => i.name == scrollname);
 				if (!scroll) {
 					parent.buy(scrollname);
-          game_log("buying " + scroll_name)
+          game_log("buying " + scrollname)
 				return;
 			  }
         game_log("upgrading " + c.name + " " + c.level)
@@ -235,7 +235,7 @@ function compound_items() {
         game_log("buying " + scroll_name)
         return;
       }
-      game_log("compounding " + c.name + " " + c.level)
+      game_log("compounding " + c[i].name + " " + c[0].level)
       parent.socket.emit('compound', {
         items: [c[i], c[i + 1], c[i + 2]],
         scroll_num: scroll,
