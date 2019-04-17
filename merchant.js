@@ -10,6 +10,7 @@ setInterval(function () {
     smart_move({map:"main", x:standx, y:standy})
   }
 }, 1000)
+
 setInterval(function(){
     if(!character.moving && character.map == "main"){
         parent.socket.emit("merchant", {num:41});
@@ -164,9 +165,19 @@ setInterval(function() {
 	   if(parent != null && parent.socket != null) {
 		   upgrade();
 		   compound_items();
+       move_item_to_empty_slot(36);
 	   }
   }
 }, 500);
+
+function move_item_to_empty_slot(item) {
+  let items = parent.character.items
+	for(let i = 4; i < 41; i++) {
+    if ((items[i]) == null) {
+      swap(item, i)
+    }
+  }
+}
 
 function upgrade() {
 	for (let i = 0; i < character.items.length; i++)
