@@ -96,11 +96,25 @@ var potion_types = ["hpot0", "mpot0"];//The types of potions to keep supplied.
 	//}
 //}, 50);
 
-//Send Items to merchant if in range
-setInterval(function ()
-{
+//call merchant if lucky buff wears off or someone else puts one on you
+setInterval(function () {
+	let player == "Sozam"
+	if(parent.character.s.mluck.f !== player) {
+		give_location(player)
+	}
+	if (get_player("Sozam") != null) {
+		stop(move)
+		move(
+		character.x + ((player.x - character.x)),
+		character.y + ((player.y - character.y)));
+	}
+}, 1000);
+
+//Send Items and gold to merchant if in range
+setInterval(function () {
 	let items = parent.character.items
 	let player = get_player("Sozam");
+	let gold = character.gold
 	if (player == null) return;
 	if (player.visible == null) return;
 	for(let i = 2; i < 42; i++) {
@@ -108,26 +122,13 @@ setInterval(function ()
 			send_item(player, i, 1)
 			send_cm("Sozam", "thanks")
 			var thanks = true
-			if (parent.character.s.mluck === undefined) {
-				stop(move)
-	      move(
-	      character.x + ((player.x - character.x)),
-	      character.y + ((player.y - character.y)));
-			}
 		}
 	}
-}, 1000);
-//Send Gold to merchant if in range
-setInterval(function ()
-{
-	let player = get_player("Sozam");
-	let gold = character.gold
-	if (player == null) return;
-	if (player.visible == null) return;
-		if (gold > 500000) {
-			send_gold(player, gold - 500000)
-		}
-}, 10000);
+	if (gold > 500000) {
+		send_gold(player, gold - 500000)
+	}
+}, 1000 *10);
+
 //Movement And Attacking
 setInterval(function () {
 
