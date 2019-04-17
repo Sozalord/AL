@@ -108,6 +108,12 @@ setInterval(function ()
 			send_item(player, i, 1)
 			send_cm("Sozam", "thanks")
 			var thanks = true
+			if (parent.character.s.mluck === undefined) {
+				stop(move)
+	      move(
+	      character.x + ((player.x - character.x)),
+	      character.y + ((player.y - character.y)));
+			}
 		}
 	}
 }, 1000);
@@ -200,7 +206,9 @@ function farm()
           }
       }
       else {
+				if (!is_moving("Sozaw")) {
           move_to_target(target);
+				}
       }
 	}
 	else
@@ -213,9 +221,11 @@ function farm()
 	                attack(target);
 	            }
 	        }
-	        else {
-	            move_to_target(target);
-	        }
+					else {
+						if (!is_moving("Sozaw")) {
+		          move_to_target(target);
+						}
+		      }
 		}
 		else
 		{
