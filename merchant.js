@@ -63,7 +63,7 @@ setInterval(function(){
 setInterval(function ()
 {
   if (distance_to_point(standx, standy) < 20) {
-	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wbreeches", "wgloves", "wshoes", "wattire", "wcap", "vitearring", "strearring", "dexearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
+	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wbreeches", "wgloves", "wshoes", "wattire", "wcap", "vitearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
 	let items = parent.character.items
 	for(let i = 3; i < 42; i++) {
 		if ((items[i]) != null) {
