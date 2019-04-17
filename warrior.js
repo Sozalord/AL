@@ -206,7 +206,7 @@ function farm()
 		move_to_target(sozam)
 	}
 	if (parent.character.s.mluck !== undefined) {
-		if (sozam != null && parent.character.s.mluck.f !== sozam) {
+		if (sozam != null && parent.character.s.mluck.f !== "Sozam") {
 			move_to_target(sozam)
 		}
 	}
