@@ -235,8 +235,6 @@ function compound_items() {
         game_log("buying " + scroll_name)
         return;
       }
-      let item = character.items[i];
-      game_log("compounding " + item.name + " " + item.level)
       parent.socket.emit('compound', {
         items: [c[i], c[i + 1], c[i + 2]],
         scroll_num: scroll,
