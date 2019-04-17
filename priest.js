@@ -1,3 +1,4 @@
+//my group
 var group = ["Sozaw", "Sozap", "Sozar"];
 
 setInterval(function () {
