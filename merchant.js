@@ -203,13 +203,13 @@ function upgrade() {
           game_log("buying " + scroll_name)
 				return;
 			  }
+        game_log("upgrading " + c.name + " " + c.level)
 			  parent.socket.emit('upgrade', {
 				item_num: i,
 				scroll_num: scroll_slot,
 				offering_num: null,
 				clevel: c.level
 			  });
-        game_log("upgrade " + c.name + " " + c.level)
 			  return;
 			}
     	}
@@ -235,13 +235,13 @@ function compound_items() {
         game_log("buying " + scroll_name)
         return;
       }
+      game_log("compounding " + c.name + " " + c.level)
       parent.socket.emit('compound', {
         items: [c[i], c[i + 1], c[i + 2]],
         scroll_num: scroll,
         offering_num: null,
         clevel: c[0]
       });
-      game_log("upgrade " + c.name + " " + c.level)
 	  return;
     }
   }
