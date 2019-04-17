@@ -200,15 +200,16 @@ function upgrade() {
 				let [scroll_slot, scroll] = find_item(i => i.name == scrollname);
 				if (!scroll) {
 					parent.buy(scrollname);
+          game_log("buying " + scroll_name)
 				return;
 			  }
-
 			  parent.socket.emit('upgrade', {
 				item_num: i,
 				scroll_num: scroll_slot,
 				offering_num: null,
 				clevel: c.level
 			  });
+        game_log("upgrade " + c.name + " " + c.level)
 			  return;
 			}
     	}
@@ -231,19 +232,16 @@ function compound_items() {
       let [scroll, _] = find_item(i => i.name == scroll_name);
       if (scroll == -1) {
         parent.buy(scroll_name);
+        game_log("buying " + scroll_name)
         return;
       }
-
-		game_log(scroll_name);
-		game_log(c[i]);
-		game_log(c[i+1]);
-		game_log(c[i+2]);
       parent.socket.emit('compound', {
         items: [c[i], c[i + 1], c[i + 2]],
         scroll_num: scroll,
         offering_num: null,
         clevel: c[0]
       });
+      game_log("upgrade " + c.name + " " + c.level)
 	  return;
     }
   }
