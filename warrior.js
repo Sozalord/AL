@@ -208,11 +208,14 @@ function farm()
 	let sozam = get_player("Sozam");
 	if (sozam != null && parent.character.s.mluck === undefined) {
 		move_to_target(sozam)
-		send_cm("Sozam", "thanks")
 	}
 	if (parent.character.s.mluck !== undefined) {
 		if (sozam != null && parent.character.s.mluck.f !== "Sozam") {
 			move_to_target(sozam)
+		}
+	}
+	if (parent.character.s.mluck !== undefined) {
+		if (sozam != null && parent.character.s.mluck.f === "Sozam") {
 			send_cm("Sozam", "thanks")
 		}
 	}
