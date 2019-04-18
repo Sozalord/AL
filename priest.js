@@ -70,13 +70,13 @@ setInterval(function () {
 	if (player.visible == null) return;
 	for(let i = 2; i < 42; i++) {
     	if ((items[i]) != null) {
-			send_item(player, i, 1)
+			send_item(player, i, 100)
 		}
 	}
 	if (gold > 500000) {
 		send_gold(player, gold - 500000)
 	}
-}, 1000 *10);
+}, 1000 *4);
 
 //Movement And Attacking
 setInterval(function () {

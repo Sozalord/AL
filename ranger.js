@@ -43,7 +43,7 @@ setInterval(function () {
 	for(let i = 2; i < 42; i++) {
 		if ((items[i]) != null) {
 			if(eggs.indexOf(items[i].name) > -1) {
-				send_item("Sozap", i, 1)
+				send_item("Sozap", i, 100)
 			}
 		}
 	}
@@ -81,7 +81,7 @@ setInterval(function () {
 	if (gold > 500000) {
 		send_gold(player, gold - 500000)
 	}
-}, 1000 *10);
+}, 1000 *4);
 
 //Movement And Attacking
 setInterval(function () {
