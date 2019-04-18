@@ -100,17 +100,23 @@ setInterval(function () {
 	let player = "Sozam"
 	if (parent.character.s.mluck === undefined) {
 		give_location(player)
+		if (get_player("Sozam") != null) {
+			stop(move)
+			move(
+			character.x + ((player.x - character.x)),
+			character.y + ((player.y - character.y)));
+		}
 	}
 	else {
 		if (parent.character.s.mluck.f !== player) {
 			give_location(player)
+			if (get_player("Sozam") != null) {
+				stop(move)
+				move(
+				character.x + ((player.x - character.x)),
+				character.y + ((player.y - character.y)));
+			}
 		}
-	}
-	if (get_player("Sozam") != null) {
-		stop(move)
-		move(
-		character.x + ((player.x - character.x)),
-		character.y + ((player.y - character.y)));
 	}
 }, 1000 *60);
 
