@@ -18,7 +18,7 @@ function on_cm(name, data) {
   console.log(data)
   if (name == null) return;
   if (!my_people.includes(name)) return;
-  if (data == "thanks"){
+  if (!smart_moving && data == "thanks"){
     stop(move)
     smart_move({map:"main", x:standx, y:standy})
   }
