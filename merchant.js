@@ -63,7 +63,7 @@ setInterval(function(){
 setInterval(function ()
 {
   if (distance_to_point(standx, standy) < 20) {
-	let unwanted_items = ["hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wgloves", "wattire", "wcap", "vitearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
+	let unwanted_items = ["vitring", "hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wgloves", "wattire", "wcap", "vitearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
 	let items = parent.character.items
 	for(let i = 3; i < 42; i++) {
 		if ((items[i]) != null) {
@@ -147,7 +147,7 @@ var combineWhitelist =
 		strring: 3,
 		intring: 3,
 		dexring: 3,
-		vitring: 3,
+		//vitring: 3,
 		dexamulet: 3,
 		intamulet: 3,
 		stramulet: 3,
