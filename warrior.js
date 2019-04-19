@@ -235,11 +235,11 @@ function farm()
 						taunt(target)
 					}
 					if (parent.character.s.sugarrush === undefined) {
-					if (character.slots.mainhand != "candycanesword" && !can_attack(target)) {
+					if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
 						equip(40, "mainhand");
 						equip(41, "offhand");
 					}
-          if (character.slots.mainhand != "candycanesword" && can_attack(target)) {
+          if (character.slots.mainhand.name != "candycanesword" && can_attack(target)) {
 							equip(40, "mainhand");
 							equip(41, "offhand");
               attack(target);
@@ -249,11 +249,11 @@ function farm()
 					}
 				}
 				if (parent.character.s.sugarrush !== undefined) {
-				if (character.slots.mainhand != "candycanesword" && !can_attack(target)) {
+				if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
 					equip(40, "mainhand");
 					equip(41, "offhand");
 				}
-				if (character.slots.mainhand != "bataxe" && can_attack(target)) {
+				if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
 						unequip("offhand");
 						equip(40, "mainhand");
 						attack(target);
