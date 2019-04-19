@@ -244,9 +244,6 @@ function farm()
 							equip(41, "offhand");
               attack(target);
           }
-					else {
-						attack(target);
-					}
 				}
 				if (parent.character.s.sugarrush !== undefined) {
 				if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
@@ -257,9 +254,6 @@ function farm()
 						unequip("offhand");
 						equip(40, "mainhand");
 						attack(target);
-				}
-				else {
-					attack(target);
 				}
 			}
       }
