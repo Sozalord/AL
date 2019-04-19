@@ -40,7 +40,7 @@ setInterval(function () {
 	if ((items[36]) != null) {
 		give_location("Sozam")
 	}
-	for(let i = 2; i < 42; i++) {
+	for(let i = 2; i < 41; i++) {
 		if ((items[i]) != null) {
 			if(eggs.indexOf(items[i].name) > -1) {
 				send_item("Sozap", i, 100)
@@ -73,7 +73,7 @@ setInterval(function () {
 	let gold = character.gold
 	if (player == null) return;
 	if (player.visible == null) return;
-	for(let i = 2; i < 42; i++) {
+	for(let i = 2; i < 41; i++) {
     	if ((items[i]) != null) {
 			send_item(player, i, 1)
 		}

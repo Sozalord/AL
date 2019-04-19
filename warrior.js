@@ -127,12 +127,12 @@ setInterval(function () {
 	let gold = character.gold
 	if (player == null) return;
 	if (player.visible == null) return;
-	for(let i = 2; i < 39; i++) {
+	for(let i = 2; i < 40; i++) {
 			if ((items[i] == "candycanesword")) {
-				swap(i, 40)
+				swap(i, 41)
 			}
 			if ((items[i] == "sshield")) {
-				swap(i, 41)
+				swap(i, 40)
 			}
 			if ((items[i] == "bataxe")) {
 				swap(i, 41)
@@ -236,23 +236,23 @@ function farm()
 					}
 					if (parent.character.s.sugarrush === undefined) {
 					if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
-						equip(40, "mainhand");
-						equip(41, "offhand");
+						equip(41, "mainhand");
+						equip(40, "offhand");
 					}
           if (character.slots.mainhand.name != "candycanesword" && can_attack(target)) {
-							equip(40, "mainhand");
-							equip(41, "offhand");
+							equip(41, "mainhand");
+							equip(40, "offhand");
               attack(target);
           }
 				}
 				if (parent.character.s.sugarrush !== undefined) {
 				if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
-					equip(40, "mainhand");
-					equip(41, "offhand");
+					equip(41, "mainhand");
+					equip(40, "offhand");
 				}
 				if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
 						unequip("offhand");
-						equip(40, "mainhand");
+						equip(41, "mainhand");
 						attack(target);
 				}
 			}

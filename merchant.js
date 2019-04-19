@@ -65,7 +65,7 @@ setInterval(function ()
   if (distance_to_point(standx, standy) < 20) {
 	let unwanted_items = ["vitring", "hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wgloves", "wattire", "vitearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
 	let items = parent.character.items
-	for(let i = 3; i < 42; i++) {
+	for(let i = 3; i < 41; i++) {
 		if ((items[i]) != null) {
     		if(unwanted_items.indexOf(items[i].name) > -1) {
 				sell(i, 1)
