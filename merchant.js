@@ -28,6 +28,11 @@ setInterval(function() {
         parent.socket.emit("merchant", {
             close: 41
         });
+      }
+  }, 1000);
+
+  setInterval(function () {
+    if (distance_to_point(standx, standy) > 200) {
         //searches everyone nearby
         for (id in parent.entities) {
             var current = parent.entities[id];
@@ -58,7 +63,7 @@ setInterval(function() {
             }
         }
     }
-}, 1000);
+}, 500);
 
 setInterval(function() {
     if (distance_to_point(standx, standy) < 20) {
