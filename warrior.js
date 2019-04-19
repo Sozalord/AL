@@ -137,7 +137,7 @@ setInterval(function () {
 			if ((items[i] == "bataxe")) {
 				swap(i, 41)
 			}
-    	if ((items[i]) != null) {
+    	if ((items[i]) != null && (items[i] != "sshield")) {
 			send_item(player, i, 100)
 			send_cm("Sozam", "thanks")
 		}
@@ -145,7 +145,7 @@ setInterval(function () {
 	if (gold > 500000) {
 		send_gold(player, gold - 500000)
 	}
-}, 1000 *4);
+}, 500);
 
 //Movement And Attacking
 setInterval(function () {
