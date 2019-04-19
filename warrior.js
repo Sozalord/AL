@@ -264,7 +264,14 @@ function farm() {
                     }
                     if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
                         equip(41, "mainhand")
+                    }
+                    if (character.slots.offhand == null && !can_attack(target)) {
                         equip(40, "offhand")
+                    }
+                    if (character.slots.offhand != null && !can_attack(target)) {
+                        if (character.slots.offhand.name != "sshield" && !can_attack(target)) {
+                            equip(40, "offhand")
+                        }
                     }
                     if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
                         equip(41, "mainhand")
@@ -299,7 +306,14 @@ function farm() {
                     }
                     if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
                         equip(41, "mainhand")
+                    }
+                    if (character.slots.offhand == null && !can_attack(target)) {
                         equip(39, "offhand")
+                    }
+                    if (character.slots.offhand != null && !can_attack(target)) {
+                        if (character.slots.offhand.name != "lantern" && !can_attack(target)) {
+                            equip(39, "offhand")
+                        }
                     }
                     if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
                         equip(41, "mainhand")
