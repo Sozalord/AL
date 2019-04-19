@@ -203,7 +203,7 @@ function upgrade() {
           game_log("buying " + scrollname)
 				return;
 			  }
-        game_log("upgrading " + c.name + " " + c.level + " -> " + c.level+1)
+        game_log("upgrading " + c.name + " " + c.level + " -> " + (c.level +1))
 			  parent.socket.emit('upgrade', {
 				item_num: i,
 				scroll_num: scroll_slot,

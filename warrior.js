@@ -127,7 +127,16 @@ setInterval(function () {
 	let gold = character.gold
 	if (player == null) return;
 	if (player.visible == null) return;
-	for(let i = 2; i < 42; i++) {
+	for(let i = 2; i < 39; i++) {
+			if ((items[i] == "candycanesword")) {
+				swap(i, 40)
+			}
+			if ((items[i] == "sshield")) {
+				swap(i, 41)
+			}
+			if ((items[i] == "bataxe")) {
+				swap(i, 41)
+			}
     	if ((items[i]) != null) {
 			send_item(player, i, 100)
 			send_cm("Sozam", "thanks")
@@ -225,9 +234,34 @@ function farm()
 					if (target.target != "Sozaw") {
 						taunt(target)
 					}
-          if (can_attack(target)) {
+					if (parent.character.s.sugarrush === undefined) {
+					if (character.slots.mainhand != "candycanesword" && !can_attack(target)) {
+						equip(40, "mainhand");
+						equip(41, "offhand");
+					}
+          if (character.slots.mainhand != "candycanesword" && can_attack(target)) {
+							equip(40, "mainhand");
+							equip(41, "offhand");
               attack(target);
           }
+					else {
+						attack(target);
+					}
+				}
+				if (parent.character.s.sugarrush !== undefined) {
+				if (character.slots.mainhand != "candycanesword" && !can_attack(target)) {
+					equip(40, "mainhand");
+					equip(41, "offhand");
+				}
+				if (character.slots.mainhand != "bataxe" && can_attack(target)) {
+						unequip("offhand");
+						equip(40, "mainhand");
+						attack(target);
+				}
+				else {
+					attack(target);
+				}
+			}
       }
       else {
 				if (!is_moving(get_player("Sozaw"))) {
