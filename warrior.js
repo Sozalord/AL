@@ -128,16 +128,16 @@ setInterval(function () {
 	if (player == null) return;
 	if (player.visible == null) return;
 	for(let i = 2; i < 40; i++) {
-			if ((items[i] == "candycanesword")) {
+			if ((items[i].name == "candycanesword")) {
 				swap(i, 41)
 			}
-			if ((items[i] == "sshield")) {
+			if ((items[i].name == "sshield")) {
 				swap(i, 40)
 			}
-			if ((items[i] == "bataxe")) {
+			if ((items[i].name == "bataxe")) {
 				swap(i, 41)
 			}
-    	if ((items[i]) != null && (items[i] != "sshield")) {
+    	if ((items[i]) != null && (items[i].name != "sshield")) {
 			send_item(player, i, 100)
 			send_cm("Sozam", "thanks")
 		}
