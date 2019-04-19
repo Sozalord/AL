@@ -63,7 +63,7 @@ setInterval(function(){
 setInterval(function ()
 {
   if (distance_to_point(standx, standy) < 20) {
-	let unwanted_items = ["vitring", "hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wgloves", "wattire", "wcap", "vitearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
+	let unwanted_items = ["vitring", "hpamulet", "hpbelt", "firestaff", "fireblade", "ringsj", "wgloves", "wattire", "vitearring", "gloves", "coat", "helmet", "pants", "shield", "shoes"];
 	let items = parent.character.items
 	for(let i = 3; i < 42; i++) {
 		if ((items[i]) != null) {
@@ -131,7 +131,7 @@ var upgradeWhitelist =
 		//wgloves: 7,
 		wshoes: 7,
 		//wattire: 7,
-		//wcap: 7
+		wcap: 7
 	};
 
 var combineWhitelist =
@@ -203,7 +203,7 @@ function upgrade() {
           game_log("buying " + scrollname)
 				return;
 			  }
-        game_log("upgrading " + c.name + " " + c.level)
+        game_log("upgrading " + c.name + " " + c.level + " -> " + c.level+1)
 			  parent.socket.emit('upgrade', {
 				item_num: i,
 				scroll_num: scroll_slot,
