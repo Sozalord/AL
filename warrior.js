@@ -254,9 +254,13 @@ function farm() {
             }
             if (parent.character.s.sugarrush !== undefined) {
 								if (character.slots.offhand != null) {
-									if (character.slots.offhand.name == "sshield") {
+									if (character.slots.offhand.name == "sshield" && can_attack(target)) {
 										unequip("offhand");
 									}
+								}
+								if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
+									equip(41, "mainhand")
+									equip(40, "offhand")
 								}
                 if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
                     equip(41, "mainhand")
