@@ -131,9 +131,9 @@ setInterval(function() {
             if ((items[i].name == "sshield")) {
                 swap(i, 40)
             }
-						if ((items[i].name) == "lantern") {
-								swap(i, 39)
-						}
+            if ((items[i].name) == "lantern") {
+                swap(i, 39)
+            }
             if ((items[i].name == "bataxe")) {
                 swap(i, 41)
             }
@@ -240,76 +240,76 @@ function farm() {
             if (target.target != "Sozaw") {
                 taunt(target)
             }
-						if (target.damage_type == "physical") {
-            if (parent.character.s.sugarrush === undefined) {
-								if (character.slots.offhand == null) {
-										equip (40, "offhand")
-									}
-                if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
-                    equip(41, "mainhand")
+            if (target.damage_type == "physical") {
+                if (parent.character.s.sugarrush === undefined) {
+                    if (character.slots.offhand != "sshield") {
+                        equip(40, "offhand")
+                    }
+                    if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
+                        equip(41, "mainhand")
+                    }
+                    if (character.slots.mainhand.name != "candycanesword" && can_attack(target)) {
+                        equip(41, "mainhand")
+                        attack(target);
+                    }
+                    if (character.slots.mainhand.name == "candycanesword" && can_attack(target)) {
+                        attack(target);
+                    }
                 }
-                if (character.slots.mainhand.name != "candycanesword" && can_attack(target)) {
-                    equip(41, "mainhand")
-                    attack(target);
+                if (parent.character.s.sugarrush !== undefined) {
+                    if (character.slots.offhand != null) {
+                        if (character.slots.offhand.name != null && can_attack(target)) {
+                            unequip("offhand");
+                        }
+                    }
+                    if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
+                        equip(41, "mainhand")
+                        equip(40, "offhand")
+                    }
+                    if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
+                        equip(41, "mainhand")
+                        attack(target);
+                    }
+                    if (character.slots.mainhand.name == "bataxe" && can_attack(target)) {
+                        attack(target);
+                    }
                 }
-								if (character.slots.mainhand.name == "candycanesword" && can_attack(target)) {
-									attack(target);
-								}
             }
-            if (parent.character.s.sugarrush !== undefined) {
-								if (character.slots.offhand != null) {
-									if (character.slots.offhand.name != null && can_attack(target)) {
-										unequip("offhand");
-									}
-								}
-								if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
-									equip(41, "mainhand")
-									equip(40, "offhand")
-								}
-                if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
-                    equip(41, "mainhand")
-                    attack(target);
+            if (target.damage_type == "magical") {
+                if (parent.character.s.sugarrush === undefined) {
+                    if (character.slots.offhand != "lantern") {
+                        equip(39, "offhand")
+                    }
+                    if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
+                        equip(41, "mainhand")
+                    }
+                    if (character.slots.mainhand.name != "candycanesword" && can_attack(target)) {
+                        equip(41, "mainhand")
+                        attack(target);
+                    }
+                    if (character.slots.mainhand.name == "candycanesword" && can_attack(target)) {
+                        attack(target);
+                    }
                 }
-								if (character.slots.mainhand.name == "bataxe" && can_attack(target)) {
-									attack(target);
-								}
+                if (parent.character.s.sugarrush !== undefined) {
+                    if (character.slots.offhand != null) {
+                        if (character.slots.offhand.name != null && can_attack(target)) {
+                            unequip("offhand");
+                        }
+                    }
+                    if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
+                        equip(41, "mainhand")
+                        equip(39, "offhand")
+                    }
+                    if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
+                        equip(41, "mainhand")
+                        attack(target);
+                    }
+                    if (character.slots.mainhand.name == "bataxe" && can_attack(target)) {
+                        attack(target);
+                    }
+                }
             }
-					}
-					if (target.damage_type == "magical") {
-					if (parent.character.s.sugarrush === undefined) {
-							if (character.slots.offhand == null) {
-									equip (39, "offhand")
-								}
-							if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
-									equip(41, "mainhand")
-							}
-							if (character.slots.mainhand.name != "candycanesword" && can_attack(target)) {
-									equip(41, "mainhand")
-									attack(target);
-							}
-							if (character.slots.mainhand.name == "candycanesword" && can_attack(target)) {
-								attack(target);
-							}
-					}
-					if (parent.character.s.sugarrush !== undefined) {
-							if (character.slots.offhand != null) {
-								if (character.slots.offhand.name != null && can_attack(target)) {
-									unequip("offhand");
-								}
-							}
-							if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
-								equip(41, "mainhand")
-								equip(39, "offhand")
-							}
-							if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
-									equip(41, "mainhand")
-									attack(target);
-							}
-							if (character.slots.mainhand.name == "bataxe" && can_attack(target)) {
-								attack(target);
-							}
-					}
-				}
         } else {
             if (!is_moving(get_player("Sozaw"))) {
                 move_to_target(target);
