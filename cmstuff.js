@@ -15,7 +15,7 @@ function give_location(person) {
 }
 function on_cm(name, data) {
   //recieving a message asking where you are give location
-  console.log(data)
+  console.log("Recieved cm from " + name)
   if (name == null) return;
   if (!my_people.includes(name)) return;
   if (!smart.moving && data == "thanks"){
