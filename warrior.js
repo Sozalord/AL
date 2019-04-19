@@ -119,14 +119,9 @@ setInterval(function () {
 		}
 	}
 }, 1000 *60);
-
-//Send Items and gold to merchant if in range
+//swap items to their proper slots for weaponswapping
 setInterval(function () {
 	let items = parent.character.items
-	let player = get_player("Sozam");
-	let gold = character.gold
-	if (player == null) return;
-	if (player.visible == null) return;
 	for(let i = 2; i < 40; i++) {
 			if ((items[i].name == "candycanesword")) {
 				swap(i, 41)
@@ -137,15 +132,25 @@ setInterval(function () {
 			if ((items[i].name == "bataxe")) {
 				swap(i, 41)
 			}
-    	if ((items[i]) != null && (items[i].name != "sshield")) {
+		}
+}, 250);
+
+//Send Items and gold to merchant if in range
+setInterval(function () {
+	let items = parent.character.items
+	let player = get_player("Sozam");
+	let gold = character.gold
+	if (player == null) return;
+	if (player.visible == null) return;
+	for(let i = 2; i < 40; i++) {
+    	if ((items[i]) != null && (items[i].name) != "sshield") && (items[i].name) != "candycanesword") && (items[i].name) != "bataxe") {
 			send_item(player, i, 100)
 			send_cm("Sozam", "thanks")
 		}
-	}
 	if (gold > 500000) {
 		send_gold(player, gold - 500000)
 	}
-}, 500);
+}, 1000 *2);
 
 //Movement And Attacking
 setInterval(function () {
