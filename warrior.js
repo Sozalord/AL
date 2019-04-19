@@ -239,25 +239,29 @@ function farm() {
             }
             if (parent.character.s.sugarrush === undefined) {
                 if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
-                    equip(41, "mainhand");
-                    equip(40, "offhand");
+                    equip(41, "mainhand")
+                    equip(40, "offhand")
                 }
                 if (character.slots.mainhand.name != "candycanesword" && can_attack(target)) {
-                    equip(41, "mainhand");
-                    equip(40, "offhand");
+                    equip(41, "mainhand")
+                    equip(40, "offhand")
                     attack(target);
                 }
+								if (character.slots.mainhand.name == "candycanesword" && can_attack(target)) {
+									attack(target);
+								}
             }
             if (parent.character.s.sugarrush !== undefined) {
-                if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
-                    equip(41, "mainhand");
-                    equip(40, "offhand");
-                }
+								if (character.slots.offhand.name == "sshield") {
+									unequip("offhand");
+								}
                 if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
-                    unequip("offhand");
-                    equip(41, "mainhand");
+                    equip(41, "mainhand")
                     attack(target);
                 }
+								if (character.slots.mainhand.name == "bataxe" && can_attack(target)) {
+									attack(target);
+								}
             }
         } else {
             if (!is_moving(get_player("Sozaw"))) {
