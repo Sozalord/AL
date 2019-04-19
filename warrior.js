@@ -143,7 +143,7 @@ setInterval(function () {
 	if (player == null) return;
 	if (player.visible == null) return;
 	for(let i = 2; i < 40; i++) {
-    	if ((items[i]) != null && (items[i].name) != "sshield") && (items[i].name) != "candycanesword") && (items[i].name) != "bataxe") {
+    	if ((items[i]) != null && (items[i].name) != "sshield" && (items[i].name) != "candycanesword" && (items[i].name) != "bataxe") {
 			send_item(player, i, 100)
 			send_cm("Sozam", "thanks")
 		}
