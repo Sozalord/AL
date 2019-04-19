@@ -124,14 +124,16 @@ setInterval(function() {
 setInterval(function() {
     let items = parent.character.items
     for (let i = 2; i < 40; i++) {
-        if ((items[i].name == "candycanesword")) {
-            swap(i, 41)
-        }
-        if ((items[i].name == "sshield")) {
-            swap(i, 40)
-        }
-        if ((items[i].name == "bataxe")) {
-            swap(i, 41)
+        if ((items[i]) != null) {
+            if ((items[i].name == "candycanesword")) {
+                swap(i, 41)
+            }
+            if ((items[i].name == "sshield")) {
+                swap(i, 40)
+            }
+            if ((items[i].name == "bataxe")) {
+                swap(i, 41)
+            }
         }
     }
 }, 250);
