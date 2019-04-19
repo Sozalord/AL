@@ -123,7 +123,7 @@ setInterval(function() {
 //swap items to their proper slots for weaponswapping
 setInterval(function() {
     let items = parent.character.items
-    for (let i = 2; i < 40; i++) {
+    for (let i = 2; i < 41; i++) {
         if ((items[i]) != null) {
             if ((items[i].name == "candycanesword")) {
                 swap(i, 41)
@@ -148,7 +148,7 @@ setInterval(function() {
     let gold = character.gold
     if (player == null) return;
     if (player.visible == null) return;
-    for (let i = 2; i < 40; i++) {
+    for (let i = 2; i < 41; i++) {
         if ((items[i]) != null && (items[i].name) != "sshield" && (items[i].name) != "candycanesword" && (items[i].name) != "bataxe" && (items[i].name) != "lantern") {
             send_item(player, i, 100)
             send_cm("Sozam", "thanks")
