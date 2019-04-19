@@ -148,16 +148,16 @@ setInterval(function() {
     let gold = character.gold
     if (player == null) return;
     if (player.visible == null) return;
-    for (let i = 2; i < 41; i++) {
+    for (let i = 2; i < 38; i++) {
         if ((items[i]) != null && (items[i].name) != "sshield" && (items[i].name) != "candycanesword" && (items[i].name) != "bataxe" && (items[i].name) != "lantern") {
             send_item(player, i, 100)
             send_cm("Sozam", "thanks")
         }
-        if (gold > 500000) {
-            send_gold(player, gold - 500000)
-        }
+		}
+    if (gold > 500000) {
+        send_gold(player, gold - 500000)
     }
-}, 1000 * 2);
+}, 1000);
 
 //Movement And Attacking
 setInterval(function() {

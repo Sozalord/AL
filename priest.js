@@ -79,7 +79,7 @@ setInterval(function() {
     if (gold > 500000) {
         send_gold(player, gold - 500000)
     }
-}, 1000 * 4);
+}, 1000);
 
 //Movement And Attacking
 setInterval(function() {
