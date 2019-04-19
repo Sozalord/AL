@@ -242,7 +242,12 @@ function farm() {
             }
             if (target.damage_type == "physical") {
                 if (parent.character.s.sugarrush === undefined) {
-                    if (character.slots.offhand != "sshield") {
+                    if (character.slots.offhand != null && !can_attack(target)) {
+                        if (character.slots.offhand.name != "sshield" && !can_attack(target)) {
+                            equip(40, "offhand")
+                        }
+                    }
+                    if (character.slots.offhand == null && !can_attack(target)) {
                         equip(40, "offhand")
                     }
                     if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
@@ -284,7 +289,12 @@ function farm() {
             }
             if (target.damage_type == "magical") {
                 if (parent.character.s.sugarrush === undefined) {
-                    if (character.slots.offhand != "lantern") {
+                    if (character.slots.offhand != null && !can_attack(target)) {
+                        if (character.slots.offhand.name != "lantern" && !can_attack(target)) {
+                            equip(39, "offhand")
+                        }
+                    }
+                    if (character.slots.offhand == null && !can_attack(target)) {
                         equip(39, "offhand")
                     }
                     if (character.slots.mainhand.name != "candycanesword" && !can_attack(target)) {
