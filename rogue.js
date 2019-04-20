@@ -160,8 +160,10 @@ function farm() {
                     character.x + ((player.x - character.x) + 20),
                     character.y + ((player.y - character.y) - 20));
                   }
-            else (player == null && !smart.moving) {
+            else {
+              if (player == null && !smart.moving) {
                 ask_location("Sozaw")
+              }
             }
           }
         }
