@@ -1,5 +1,5 @@
 //my group
-var group = ["Sozaw", "Sozap", "Soza"];
+var group = ["Sozaw", "Sozap", "Sozar"];
 
 setInterval(function() {
 
@@ -9,10 +9,10 @@ setInterval(function() {
     if (get_player("Sozap").party != "Sozaw") {
         send_party_invite(player1)
     }
-    let player2 = get_player("Soza");
+    let player2 = get_player("Sozar");
     if (player2 == null) return;
     if (player2.visible == null) return;
-    if (get_player("Soza").party != "Sozaw") {
+    if (get_player("Sozar").party != "Sozaw") {
         send_party_invite(player2);
     } else {
         if (character.party) {
@@ -32,8 +32,8 @@ setInterval(function() {
     if (get_active_characters().Sozap === undefined) {
         start_character("Sozap", 8)
     }
-    if (get_active_characters().Soza === undefined) {
-        start_character("Soza", 10)
+    if (get_active_characters().Sozar === undefined) {
+        start_character("Sozar", 9)
     }
 }, 1000);
 
