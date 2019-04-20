@@ -158,7 +158,7 @@ function farm() {
         }
         else {
           if (player != null) {
-            if (parent.distance(character, player) < character.range) {
+            if (parent.distance(character, player) > 60) {
                 move(
                     character.x + ((player.x - character.x) + 20),
                     character.y + ((player.y - character.y) - 20));
