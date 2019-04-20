@@ -149,31 +149,37 @@ function farm() {
     }
 
     //Attack or move to target
-    if (target != null && is_monster(target)) {
-        if (distance_to_point(target.real_x, target.real_y) < character.range) {
-            if (can_attack(target)) {
-                attack(target);
-            }
-          }
-        else {
-              move_to_target(target)
-            }
-        }
-        else {
         let player = get_player("Sozaw");
-        if (player == null) return;
-        if (parent.distance(character, player) < character.range) {
-            stop(move)
-            move(
-                character.x + ((player.x - character.x) + 20),
-                character.y + ((player.y - character.y) - 20));
+        if (player != null) {
+            var target = get_target_of(player);
         }
-        else {
-            if (!smart.moving) {
-                ask_location("Sozaw")
+        if (player == null && !smart.moving) {
+            ask_location("Sozaw")
+        }
+        if (target != null) {
+            if (distance_to_point(target.real_x, target.real_y) < character.range) {
+                if (can_attack(target)) {
+                    attack(target);
+                }
+            } else {
+                if (!is_moving(get_player("Soza"))) {
+                    move_to_target(target);
+                }
+            }
+        } else {
+            let player = get_player("Sozaw");
+            if (player == null) return;
+            if (parent.distance(character, player) < character.range) {
+                stop(move)
+                move(
+                    character.x + ((player.x - character.x) - 20),
+                    character.y + ((player.y - character.y) - 20));
+            } else {
+                if (!smart.moving) {
+                    ask_location("Sozaw")
+                }
             }
         }
-    }
 }
 
 //This function contains our logic during resupply runs
