@@ -214,25 +214,11 @@ function farm() {
     //if my distance is out of my healers range go back to healer
     let sozap = get_player("Sozap");
     if (sozap == null) return;
-    if (parent.distance(character, sozap) > sozap.range + 50) {
+    if (!character.moving && parent.distance(character, sozap) > sozap.range + 50) {
         stop(move)
         move(
             character.x + ((sozap.x - character.x) / 2),
             character.y + ((sozap.y - character.y) / 2));
-    }
-    let sozam = get_player("Sozam");
-    if (sozam != null && parent.character.s.mluck === undefined) {
-        move_to_target(sozam)
-    }
-    if (parent.character.s.mluck !== undefined) {
-        if (sozam != null && parent.character.s.mluck.f !== "Sozam") {
-            move_to_target(sozam)
-        }
-    }
-    if (parent.character.s.mluck !== undefined) {
-        if (sozam != null && parent.character.s.mluck.f === "Sozam") {
-            send_cm("Sozam", "thanks")
-        }
     }
     //Attack or move to target
     if (target != null) {
@@ -342,6 +328,20 @@ function farm() {
     } else {
         var target = find_viable_targets()[0];
         //Attack or move to target
+        let sozam = get_player("Sozam");
+        if (sozam != null && parent.character.s.mluck === undefined) {
+            move_to_target(sozam)
+        }
+        if (parent.character.s.mluck !== undefined) {
+            if (sozam != null && parent.character.s.mluck.f !== "Sozam") {
+                move_to_target(sozam)
+            }
+        }
+        if (parent.character.s.mluck !== undefined) {
+            if (sozam != null && parent.character.s.mluck.f === "Sozam") {
+                send_cm("Sozam", "thanks")
+            }
+        }
         if (target != null) {
             if (distance_to_point(target.real_x, target.real_y) < character.range) {
                 if (can_attack(target)) {
