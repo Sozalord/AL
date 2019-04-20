@@ -146,9 +146,6 @@ function farm() {
         if (player != null) {
             var target = get_target_of(player);
         }
-        if (player == null && !smart.moving) {
-            ask_location("Sozaw")
-        }
         if (target != null && is_monster(target)) {
             if (player != null && target != null && target.s.cursed == undefined && in_attack_range(target)) {
                 if (target.hp > 6000) {
@@ -162,12 +159,14 @@ function farm() {
             }
         } else {
             let player = get_player("Sozaw");
-            if (player == null) return;
-            if (parent.distance(character, player) > 60) {
-                stop(move)
-                move(
-                    character.x + ((player.x - character.x) - 20),
-                    character.y + ((player.y - character.y) - 20));
+            if (player != null) {
+            stop(move)
+            move(
+                character.x + ((player.x - character.x) - 20),
+                character.y + ((player.y - character.y) - 20));
+            }
+            else (player == null && !smart.moving) {
+                ask_location("Sozaw")
             }
         }
     }

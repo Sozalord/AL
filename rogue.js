@@ -143,9 +143,7 @@ function farm() {
         if (player != null) {
             var target = get_target_of(player);
         }
-        if (player == null && !smart.moving) {
-            ask_location("Sozaw")
-        }
+
         if (target != null) {
             if (distance_to_point(target.real_x, target.real_y) < character.range) {
                 if (can_attack(target)) {
@@ -158,14 +156,15 @@ function farm() {
         }
         else {
           if (player != null) {
-            if (parent.distance(character, player) > 60) {
                 move(
                     character.x + ((player.x - character.x) + 20),
                     character.y + ((player.y - character.y) - 20));
+                  }
+            else (player == null && !smart.moving) {
+                ask_location("Sozaw")
             }
           }
         }
-}
 
 //This function contains our logic during resupply runs
 function resupply_potions() {
