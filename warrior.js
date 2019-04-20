@@ -1,5 +1,5 @@
 //my group
-var group = ["Sozaw", "Sozap", "Sozar"];
+var group = ["Sozaw", "Sozap", "Soza"];
 
 setInterval(function() {
 
@@ -9,10 +9,10 @@ setInterval(function() {
     if (get_player("Sozap").party != "Sozaw") {
         send_party_invite(player1)
     }
-    let player2 = get_player("Sozar");
+    let player2 = get_player("Soza");
     if (player2 == null) return;
     if (player2.visible == null) return;
-    if (get_player("Sozar").party != "Sozaw") {
+    if (get_player("Soza").party != "Sozaw") {
         send_party_invite(player2);
     } else {
         if (character.party) {
@@ -32,8 +32,8 @@ setInterval(function() {
     if (get_active_characters().Sozap === undefined) {
         start_character("Sozap", 8)
     }
-    if (get_active_characters().Sozar === undefined) {
-        start_character("Sozar", 9)
+    if (get_active_characters().Soza === undefined) {
+        start_character("Soza", 9)
     }
 }, 1000);
 
@@ -85,14 +85,14 @@ var potion_types = ["hpot0", "mpot0"]; //The types of potions to keep supplied.
 //Show character ranges
 //setInterval(function(){
 //clear_drawings()
-//let sozar = get_player("Sozar")
+//let Soza = get_player("Soza")
 //let sozap = get_player("Sozap")
 //let grey = 0x566573
 //let purple = 0xA569BD
 //let green = 0x229954
-//if (sozap != null && sozar != null){
+//if (sozap != null && Soza != null){
 //draw_circle(character.real_x, character.real_y, character.range, 1, grey)
-//draw_circle(sozar.real_x, sozar.real_y, sozar.range, 1, green)
+//draw_circle(Soza.real_x, Soza.real_y, Soza.range, 1, green)
 //draw_circle(sozap.real_x, sozap.real_y, sozap.range, 1, purple)
 //}
 //}, 50);

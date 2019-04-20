@@ -1,5 +1,5 @@
 //my group
-var group = ["Sozaw", "Sozap", "Sozar"];
+var group = ["Sozaw", "Sozap", "Soza"];
 
 setInterval(function() {
     if (character.name == group[0]) {
