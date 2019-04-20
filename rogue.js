@@ -140,16 +140,6 @@ function state_controller() {
 function farm() {
     //Try to get warrior's target first before defaulting to something viable
     let player = get_player("Sozaw");
-    if (player != null) {
-        var target = get_target_of(player);
-    }
-
-    if (player == null && !smart.moving) {
-        ask_location("Sozaw")
-    }
-
-    //Attack or move to target
-        let player = get_player("Sozaw");
         if (player != null) {
             var target = get_target_of(player);
         }
@@ -161,22 +151,18 @@ function farm() {
                 if (can_attack(target)) {
                     attack(target);
                 }
-            } else {
-                if (!is_moving(get_player("Soza"))) {
-                    move_to_target(target);
-                }
             }
-        } else {
+            else {
+                move_to_target(target);
+              }
+        }
+        else {
             if (player == null) return;
             if (parent.distance(character, player) < character.range) {
                 stop(move)
                 move(
                     character.x + ((player.x - character.x) - 20),
                     character.y + ((player.y - character.y) - 20));
-            } else {
-                if (!smart.moving) {
-                    ask_location("Sozaw")
-                }
             }
         }
 }
