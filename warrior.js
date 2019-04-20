@@ -264,9 +264,8 @@ function farm() {
                             equip(40, "offhand")
                         }
                     }
-                    if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
+                    if (character.slots.offhand == null && character.slots.mainhand.name != "bataxe" && can_attack(target)) {
                         equip(41, "mainhand")
-                        attack(target);
                     }
                     if (character.slots.mainhand.name == "bataxe" && can_attack(target)) {
                         attack(target);
@@ -311,9 +310,8 @@ function farm() {
                             equip(39, "offhand")
                         }
                     }
-                    if (character.slots.mainhand.name != "bataxe" && can_attack(target)) {
+                    if (character.slots.offhand == null && character.slots.mainhand.name != "bataxe" && can_attack(target)) {
                         equip(41, "mainhand")
-                        attack(target);
                     }
                     if (character.slots.mainhand.name == "bataxe" && can_attack(target)) {
                         attack(target);
