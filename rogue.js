@@ -1,5 +1,5 @@
 //my group
-var group = ["Sozaw", "Sozap", "Sozar"];
+var group = ["Sozaw", "Sozap", "Soza"];
 
 setInterval(function() {
     if (character.name == group[0]) {
@@ -153,6 +153,9 @@ function farm() {
         if (distance_to_point(target.real_x, target.real_y) < character.range) {
             if (can_attack(target)) {
                 attack(target);
+            }
+            else {
+              move_to_target(target)
             }
         }
     } else {
