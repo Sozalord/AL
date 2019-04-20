@@ -167,7 +167,6 @@ function farm() {
                 }
             }
         } else {
-            let player = get_player("Sozaw");
             if (player == null) return;
             if (parent.distance(character, player) < character.range) {
                 stop(move)
