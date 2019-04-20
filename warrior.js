@@ -33,7 +33,7 @@ setInterval(function() {
         start_character("Sozap", 8)
     }
     if (get_active_characters().Soza === undefined) {
-        start_character("Soza", 9)
+        start_character("Soza", 10)
     }
 }, 1000);
 
