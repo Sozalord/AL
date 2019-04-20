@@ -154,11 +154,12 @@ function farm() {
             if (can_attack(target)) {
                 attack(target);
             }
-            else {
+          }
+        else {
               move_to_target(target)
             }
         }
-    } else {
+        else {
         let player = get_player("Sozaw");
         if (player == null) return;
         if (parent.distance(character, player) < character.range) {
@@ -166,7 +167,8 @@ function farm() {
             move(
                 character.x + ((player.x - character.x) + 20),
                 character.y + ((player.y - character.y) - 20));
-        } else {
+        }
+        else {
             if (!smart.moving) {
                 ask_location("Sozaw")
             }
