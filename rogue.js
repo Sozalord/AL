@@ -155,7 +155,10 @@ function farm() {
               }
         }
         else {
-          if (player != null) {
+          if (player != null && distance_to_point(player.real_x, player.real_y) > 300) {
+            ask_location("Sozaw")
+          }
+          if (player != null && distance_to_point(player.real_x, player.real_y) < 300) {
                 move(
                     character.x + ((player.x - character.x) + 20),
                     character.y + ((player.y - character.y) - 20));

@@ -159,12 +159,15 @@ function farm() {
             }
         } else {
             let player = get_player("Sozaw");
-            if (player != null) {
-            stop(move)
-            move(
-                character.x + ((player.x - character.x) - 20),
-                character.y + ((player.y - character.y) - 20));
+            if (player != null && distance_to_point(player.real_x, player.real_y) > 300) {
+              ask_location("Sozaw")
             }
+            if (player != null && distance_to_point(player.real_x, player.real_y) < 300) {
+                  stop(move)
+                  move(
+                      character.x + ((player.x - character.x) + 20),
+                      character.y + ((player.y - character.y) - 20));
+                    }
             else {
             if (player == null && !smart.moving) {
                 ask_location("Sozaw")
