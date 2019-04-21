@@ -165,7 +165,7 @@ function farm() {
             if (player != null && distance_to_point(player.real_x, player.real_y) < 300) {
                   stop(move)
                   move(
-                      character.x + ((player.x - character.x) + 20),
+                      character.x + ((player.x - character.x) - 20),
                       character.y + ((player.y - character.y) - 20));
                     }
             else {

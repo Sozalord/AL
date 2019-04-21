@@ -346,12 +346,12 @@ function farm() {
                     attack(target);
                 }
             } else {
-                if (!is_moving(get_player("Sozaw"))) {
+                if (!character.moving) {
                     move_to_target(target);
                 }
             }
         } else {
-            if (!is_moving(get_player("Sozaw"))) {
+            if (!character.moving) {
                 game_log("finding a target");
                 smart_move({
                     to: monster_targets[0]
