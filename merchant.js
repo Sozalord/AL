@@ -265,10 +265,10 @@ function find_item(filter) {
 
 
 //Draws a circle of range around merchant where his range is
-setInterval(function() {
-    clear_drawings()
-    draw_circle(character.real_x, character.real_y, 320)
-}, 100);
+//setInterval(function() {
+//    clear_drawings()
+//    draw_circle(character.real_x, character.real_y, 320)
+//}, 100);
 
 var lastluck = new Date(0);
 
