@@ -2,7 +2,14 @@ load_code(6)
 //change these to determine your sitting spot in town you want these to match whats in your cmstuff.js
 var standx = -240
 var standy = -50.0000001
+//changes colors to pink
+setInterval(function() {
+  if (parent.character.skin != "tf_pink") {
+    parent.socket.emit('activate',{slot:'ring1'});
+  }
+}, 1000)
 
+//moves to stand location
 setInterval(function() {
     items = character.items
     if (!smart.moving && (items[36]) != null) {
