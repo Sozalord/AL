@@ -134,7 +134,8 @@ var upgradeWhitelist = {
     //wgloves: 7,
     wshoes: 7,
     //wattire: 7,
-    wcap: 7
+    wcap: 7,
+    fclaw: 6
 };
 
 var combineWhitelist = {
