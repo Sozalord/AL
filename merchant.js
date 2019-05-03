@@ -9,6 +9,28 @@ setInterval(function() {
   }
 }, 1000)
 
+//Auto Joins giveaways you can see
+setInterval(function(){
+    for(let id in parent.entities)
+    {
+        let entity = parent.entities[id];
+        if(entity.id != character.id)
+        {
+            for(let slot_name in entity.slots)
+            {
+                let slot = entity.slots[slot_name];
+                if(slot && slot.giveaway)
+                {
+                    if(!slot.list.includes(character.id))
+                    {
+                        parent.join_giveaway(slot_name,entity.id,slot.rid);
+                    }
+                }
+            }
+        }
+    }
+}, 100);
+
 //moves to stand location
 setInterval(function() {
     items = character.items
